@@ -115,7 +115,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     </main>
 
       <div 
-        className="absolute bottom-6 left-4 right-4 md:left-auto md:right-auto md:w-full md:max-w-[1200px] flex justify-end z-40 pointer-events-none mx-auto" 
+        className="absolute bottom-6 inset-x-0 w-full max-w-[1200px] mx-auto px-[24px] md:px-[30px] flex justify-end z-40 pointer-events-none" 
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
         <nav 
