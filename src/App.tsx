@@ -6,6 +6,8 @@ import { ProfilePage } from './pages/profile/ProfilePage';
 import { NotificationsPage } from './pages/notifications/NotificationsPage';
 import { ChatsPage } from './pages/chats/ChatsPage';
 import { StatsPage } from './pages/stats/StatsPage';
+import { ScheduleDetailPage } from './pages/schedule/ScheduleDetailPage';
+import { AiInsightDetailPage } from './pages/ai/AiInsightDetailPage';
 
 export const App: React.FC = () => {
   return (
@@ -14,6 +16,8 @@ export const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/schedule-detail" element={<ScheduleDetailPage />} />
+          <Route path="/ai-insight" element={<AiInsightDetailPage />} />
           <Route path="/chats" element={<ChatsPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
