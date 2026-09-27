@@ -88,11 +88,11 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   };
 
   const appContent = (
-    <div className="h-full w-full flex flex-col relative bg-white overflow-hidden transition-colors duration-500">
+    <div className="h-full w-full flex flex-col relative bg-white  transition-colors duration-500">
       
       <main 
         onScroll={handleScroll}
-        className={`flex-1 overflow-y-auto overflow-x-hidden w-full px-[24px] md:px-[30px] pb-[120px] relative ${
+        className={`flex-1 overflow-y-auto  w-full px-[24px] md:px-[30px] pb-[120px] relative ${
           deviceMode === 'iphone16promax' 
             ? 'pt-[54px]' 
             : 'pt-[calc(env(safe-area-inset-top,0px)+12px)]'
@@ -122,7 +122,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
-          className={`pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center overflow-hidden touch-pan-y ${
+          className={`pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center  touch-pan-y ${
             isNavOpen 
               ? 'glass3d w-full h-[80px] rounded-[32px] px-4 justify-between opacity-100' 
               : 'bg-black shadow-2xl border border-white/10 w-[64px] h-[64px] rounded-full px-0 justify-center opacity-100 hover:scale-105'
@@ -161,7 +161,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   );
 
   return (
-    <div className="fixed inset-0 bg-[#0a0a0a] flex items-center justify-center font-sans overflow-hidden">
+    <div className="fixed inset-0 bg-[#0a0a0a] flex items-center justify-center font-sans ">
       
       <div className="absolute top-24 right-0 z-50 flex items-start">
         <button 
@@ -173,7 +173,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           </svg>
         </button>
 
-        <div className={`transition-all duration-300 ease-in-out overflow-hidden glass3d rounded-bl-2xl ${isDevMenuOpen ? 'max-w-[200px] opacity-100' : 'max-w-0 opacity-0'}`}>
+        <div className={`transition-all duration-300 ease-in-out  glass3d rounded-bl-2xl ${isDevMenuOpen ? 'max-w-[200px] opacity-100' : 'max-w-0 opacity-0'}`}>
           <div className="p-3 flex flex-col gap-1 w-[160px]">
             <div className="text-[10px] font-bold text-white uppercase tracking-widest mb-1 px-1">Device Mode</div>
             {Object.entries(devices).map(([key, config]) => (
@@ -214,7 +214,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           </div>
         )}
 
-        <div className="w-full h-full rounded-[inherit] overflow-hidden flex flex-col">
+        <div className="w-full h-full rounded-[inherit]  flex flex-col">
            {appContent}
         </div>
       </div>
