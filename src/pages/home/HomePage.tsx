@@ -1,8 +1,38 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+﻿import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // --- FLOATING MENU STATE ---
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(`${path}/`);
+
+  const navItems = [
+    { label: 'Home', path: '/home', icon: (a: boolean) => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={a ? "#F07820" : "#555555"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 22V12h6v10"></path></svg> },
+    { label: 'Chats', path: '/chats', icon: (a: boolean) => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={a ? "#F07820" : "#555555"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> },
+    { label: 'AI Hub', path: '/home', icon: () => <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M10 2.5L11.5 7.5L16.5 9L11.5 10.5L10 15.5L8.5 10.5L3.5 9L8.5 7.5L10 2.5z"/><path d="M17 14l1 2.5l2.5 1l-2.5 1l-1 2.5l-1-2.5l-2.5-1l2.5-1l1-2.5z"/></svg>, isAi: true },
+    { label: 'Stats', path: '/stats', icon: (a: boolean) => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={a ? "#F07820" : "#555555"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="12" rx="1"/><rect x="16" y="4" width="4" height="16" rx="1"/></svg> },
+    { label: 'Profile', path: '/profile', icon: (a: boolean) => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={a ? "#F07820" : "#555555"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> },
+  ];
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+  
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 40 || distance < -40) setIsNavOpen(false); 
+  };
+  // ---------------------------
 
   useEffect(() => {
     document.body.style.backgroundColor = '#ffffff';
@@ -15,13 +45,10 @@ export const HomePage: React.FC = () => {
   const dashOffset = 2 * Math.PI * 40 * 0.25;
 
   return (
-    <div className="w-full relative pb-24">
+    <div className="w-full relative pb-32 min-h-screen">
       {/* IMMOVABLE FIXED GLASS SHIELD */}
-      <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
-      
-      
+      <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-40 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
         <div className="px-4 py-3 flex items-center justify-between">
-          {/* PROFILE HEADER BLOCK */}
           <div onClick={() => navigate('/profile')} className="flex items-center gap-3 cursor-pointer group">
             <div className="w-[44px] h-[44px] rounded-full bg-[#2C2D30] flex items-center justify-center shrink-0 border border-stone-700/40 shadow-sm">
               <svg className="w-6 h-6 text-[#A0A0A0]" viewBox="0 0 20 20" fill="currentColor">
@@ -46,10 +73,8 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* INVISIBLE SPACER TO PREVENT OVERLAP */}
       <div className="w-full h-[calc(70px+env(safe-area-inset-top))]" />
 
-      {/* PAGE CONTENT */}
       <div className="space-y-6 pt-1">
         <div>
           <h1 className="text-[26px] font-bold text-[#111111] leading-snug tracking-tight">Ready to level up today?</h1>
@@ -87,7 +112,54 @@ export const HomePage: React.FC = () => {
           <p className="text-[14px] text-[#222222] leading-relaxed">You're spending <span className="font-bold">more time on your weak topics.</span> Keep it up!</p>
         </div>
       </div>
+
+      {/* TRANSPLANTED FLOATING MENU */}
+      <div 
+        className="fixed bottom-6 inset-x-0 w-full max-w-[1200px] mx-auto px-[24px] md:px-[30px] flex justify-end z-50 pointer-events-none" 
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      >
+        <nav 
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          className={`pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center touch-pan-y ${
+            isNavOpen 
+              ? 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 w-full h-[80px] rounded-[32px] px-4 justify-between opacity-100' 
+              : 'bg-[#F07820] shadow-[0_8px_25px_rgba(240,120,32,0.5)] border-none w-[64px] h-[64px] rounded-full px-0 justify-center opacity-100 hover:scale-105'
+          }`}
+        >
+          {isNavOpen ? (
+            navItems.map((item, idx) => {
+              const active = !item.isAi && isActive(item.path);
+              return (
+                <button 
+                  key={idx} 
+                  onClick={() => navigate(item.path)} 
+                  className="w-[60px] md:w-[71px] flex justify-center items-center active:opacity-70 transition-transform hover:scale-105"
+                >
+                  <div className={`w-[48px] h-[48px] rounded-full flex items-center justify-center transition-colors ${
+                    item.isAi ? 'bg-[#F07820] shadow-[0_0_15px_rgba(240,120,32,0.6)]' : active ? 'bg-black/5' : 'bg-transparent'
+                  }`}>
+                    {item.icon(active)}
+                  </div>
+                </button>
+              );
+            })
+          ) : (
+            <button 
+              onClick={() => setIsNavOpen(true)} 
+              className="w-full h-full flex flex-col gap-[5px] items-center justify-center text-white active:scale-95 transition-transform"
+            >
+              <div className="w-5 h-[2px] bg-white rounded-full"></div>
+              <div className="w-5 h-[2px] bg-white rounded-full"></div>
+              <div className="w-5 h-[2px] bg-white rounded-full"></div>
+            </button>
+          )}
+        </nav>
+      </div>
+
     </div>
   );
 };
+
 export default HomePage;
