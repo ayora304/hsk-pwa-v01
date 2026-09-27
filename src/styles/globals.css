@@ -1,0 +1,27 @@
+﻿@import "tailwindcss";
+
+:root {
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  --color-orange: #F07820;
+  --color-bg: #FAF0E8;
+  --color-surface: #FFFFFF;
+  --color-ink: #111111;
+  --color-muted: #888888;
+}
+
+* {
+  font-family: var(--font-family-primary);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a2e;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
