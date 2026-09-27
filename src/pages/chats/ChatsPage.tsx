@@ -1,99 +1,104 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getStoredChats, getStoredMessages, addMessageToStore, ChatGroup, Message } from '../../data/chatsData';
+
+interface Chat {
+  id: string;
+  name: string;
+  initials: string;
+  message: string;
+  time: string;
+  unread?: number;
+  isOnline?: boolean;
+}
+
+const CHATS: Chat[] = [
+  { id: '1', name: 'Chen Teacher', initials: 'CT', message: 'Remember the 把 sentence structure for tomorrow.', time: '5 min', unread: 1, isOnline: true },
+  { id: '2', name: 'Katie Keller', initials: 'KK', message: 'I’m watching a Chinese drama. What are you doing?', time: '15 min' },
+  { id: '3', name: 'Stephen Mann', initials: 'SM', message: 'I’m working now. I’m making a deposit for our company.', time: '1 hour', isOnline: true },
+  { id: '4', name: 'Alex Martinez', initials: 'AM', message: 'I really find the subject very interesting. I’m enjoying it.', time: '5 hour' },
+  { id: '5', name: 'Melvin Pratt', initials: 'MP', message: 'Great seeing you. I have to go now. I’ll talk to you later.', time: '5 hour' },
+  { id: '6', name: 'Elena Zhang', initials: 'EZ', message: 'Article #12 translation is ready for review.', time: 'Yesterday', unread: 3 },
+  { id: '7', name: 'Admin', initials: 'AD', message: 'New HSK mock exam uploaded to the portal.', time: 'Yesterday' }
+];
 
 export const ChatsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [chats, setChats] = useState<ChatGroup[]>([]);
-  const [activeChatId, setActiveChatId] = useState<string | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputVal, setInputVal] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.style.backgroundColor = '#ffffff';
     document.documentElement.style.backgroundColor = '#ffffff';
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', '#ffffff');
-    setChats(getStoredChats());
-  }, [activeChatId]);
-
-  useEffect(() => {
-    if (activeChatId) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages, activeChatId]);
-
-  const openChat = (id: string) => {
-    setActiveChatId(id);
-    setMessages(getStoredMessages(id));
-  };
-
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputVal.trim() || !activeChatId) return;
-    const newMsg: Message = { id: Date.now().toString(), sender: 'You', text: inputVal.trim(), time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), isMe: true };
-    addMessageToStore(activeChatId, newMsg);
-    setMessages(prev => [...prev, newMsg]);
-    setInputVal('');
-  };
+  }, []);
 
   return (
-    <div className="w-full relative pb-24">
-      {activeChatId ? (
-        <div className="flex flex-col h-screen w-full">
-          <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
+    <div className="w-full relative pb-32 min-h-screen bg-white">
       
+      {/* HEADER */}
+      <div className="fixed top-0 inset-x-0 w-full max-w-[1200px] mx-auto z-50 bg-white pt-[calc(env(safe-area-inset-top)+16px)]">
+        <div className="px-6 py-2 flex items-center justify-between">
+          <h1 className="font-extrabold text-[32px] text-[#111111] tracking-tight">Messages</h1>
+          <button className="w-10 h-10 flex items-center justify-center text-[#111111] active:scale-95 transition-transform cursor-pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
       
-            <div className="px-4 py-3 flex items-center gap-3">
-              <button onClick={() => setActiveChatId(null)} className="w-[40px] h-[40px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full shadow-sm cursor-pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-              <div><h1 className="text-[18px] font-bold text-[#111111] leading-tight">{chats.find(c => c.id === activeChatId)?.name}</h1><p className="text-[11px] text-[#F07820] font-medium">128 active members</p></div>
+      {/* INVISIBLE SPACER */}
+      <div className="w-full h-[calc(80px+env(safe-area-inset-top))]" />
+
+      {/* CHAT LIST */}
+      <div className="px-6 flex flex-col">
+        {CHATS.map((chat, index) => (
+          <div 
+            key={chat.id}
+            className={`w-full py-4 flex items-center gap-4 cursor-pointer active:opacity-70 transition-opacity ${
+              index !== CHATS.length - 1 ? 'border-b border-[#F5F5F7]' : ''
+            }`}
+          >
+            {/* AVATAR & ONLINE STATUS */}
+            <div className="relative shrink-0">
+              <div className="w-[56px] h-[56px] rounded-full bg-[#FFF0E5] flex items-center justify-center border border-[#FCD8BE]/50">
+                <span className="font-bold text-[20px] text-[#F07820]">{chat.initials}</span>
+              </div>
+              {chat.isOnline && (
+                <div className="absolute bottom-0.5 right-0.5 w-[14px] h-[14px] bg-[#10B981] rounded-full border-2 border-white z-10 shadow-sm" />
+              )}
+            </div>
+
+            {/* CONTENT */}
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="font-bold text-[16px] text-[#111111] truncate pr-2">
+                  {chat.name}
+                </h3>
+                <span className="text-[12px] font-medium text-[#999999] shrink-0">
+                  {chat.time}
+                </span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <p className="text-[14px] text-[#888888] truncate pr-4 leading-snug">
+                  {chat.message}
+                </p>
+                {chat.unread && (
+                  <div className="w-6 h-6 rounded-full bg-[#F07820] flex items-center justify-center shrink-0 shadow-sm">
+                    <span className="text-[11px] font-bold text-white leading-none mt-[1px]">
+                      {chat.unread}
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-          <div className="w-full flex-none h-[98px]" />
-          <div className="flex-1 overflow-y-auto space-y-3 py-3">
-            {messages.map((msg) => (
-              <div key={msg.id} className={`flex flex-col ${msg.isMe ? 'items-end' : 'items-start'}`}>
-                {!msg.isMe && <span className="text-[11px] font-bold text-[#888888] ml-2 mb-1">{msg.sender}</span>}
-                <div className={`max-w-[80%] p-3.5 rounded-[18px] text-[14px] leading-relaxed ${msg.isMe ? 'bg-[#F07820] text-white rounded-br-xs shadow-sm' : 'bg-[#F5F5F7] text-[#111111] border border-[#EEEEEE] rounded-bl-xs'}`}>{msg.text}</div>
-                <span className="text-[10px] text-[#AAAAAA] mt-1 px-1">{msg.time}</span>
-              </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-          <form onSubmit={handleSend} className="flex items-center gap-2 py-4 flex-none bg-white border-t border-[#EEEEEE]">
-            <input type="text" value={inputVal} onChange={(e) => setInputVal(e.target.value)} placeholder="Message..." className="flex-1 bg-[#F5F5F7] border border-[#EEEEEE] rounded-full py-3.5 px-4 text-sm focus:outline-none focus:border-[#F07820]" />
-            <button type="submit" className="w-[44px] h-[44px] rounded-full bg-[#F07820] text-white flex items-center justify-center shadow-md flex-shrink-0 cursor-pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
-          </form>
-        </div>
-      ) : (
-        <div>
-          <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
-      
-      
-            <div className="px-4 py-3 flex items-center gap-4">
-              <button onClick={() => navigate('/home')} className="w-[40px] h-[40px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full shadow-sm cursor-pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-              <div><h1 className="text-[24px] font-bold text-[#111111] tracking-tight leading-tight">Study Groups</h1><p className="text-xs text-[#888888]">30 active channels</p></div>
-            </div>
-          </div>
-          <div className="w-full h-[calc(70px+env(safe-area-inset-top))]" />
-          <div className="space-y-2.5 pt-2">
-            {chats.map((group) => (
-              <div key={group.id} onClick={() => openChat(group.id)} className="w-full p-3.5 rounded-[20px] bg-white border border-[#F0F0F0] shadow-sm flex items-center justify-between cursor-pointer">
-                <div className="flex items-center gap-3.5 min-w-0">
-                  <div className="w-11 h-11 rounded-full bg-[#FFF0E5] flex items-center justify-center font-bold text-[#F07820] text-base flex-shrink-0 border border-[#FCD8BE]/40">#</div>
-                  <div className="min-w-0"><div className="flex items-center gap-2"><h3 className="font-bold text-[#111111] text-[15px] truncate">{group.name}</h3><span className="text-[10px] font-semibold text-[#888888] bg-[#F5F5F7] px-2 py-0.5 rounded-full flex-shrink-0">{group.category}</span></div><p className="text-[13px] text-[#777777] truncate mt-0.5">{group.lastMsg}</p></div>
-                </div>
-                <div className="flex flex-col items-end gap-1.5 flex-shrink-0 ml-2">
-                  <span className="text-[11px] font-medium text-[#AAAAAA]">{group.time}</span>
-                  {group.unread > 0 && <span className="px-1.5 py-0.5 rounded-full bg-[#F07820] text-white text-[10px] font-bold">{group.unread} new</span>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+        ))}
+      </div>
+
     </div>
   );
 };
+
 export default ChatsPage;
