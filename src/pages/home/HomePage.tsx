@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
@@ -17,20 +17,23 @@ export const HomePage: React.FC = () => {
   return (
     <div className="w-full relative pb-24">
       {/* IMMOVABLE FIXED GLASS SHIELD */}
-      <div className="fixed top-0 inset-x-0 z-40 w-full max-w-[600px] mx-auto bg-white/80 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border-b border-gray-100/80 pt-[env(safe-area-inset-top)] transition-all">
+      <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
+      
+      
         <div className="px-4 py-3 flex items-center justify-between">
+          {/* PROFILE HEADER BLOCK */}
           <div onClick={() => navigate('/profile')} className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-[42px] h-[42px] rounded-full bg-[#1C1C1C] flex items-center justify-center shadow-sm">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+            <div className="w-[44px] h-[44px] rounded-full bg-[#2C2D30] flex items-center justify-center shrink-0 border border-stone-700/40 shadow-sm">
+              <svg className="w-6 h-6 text-[#A0A0A0]" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
               </svg>
             </div>
-            <div>
-              <p className="text-[11px] text-[#888888] font-normal leading-tight">Welcome Back</p>
-              <p className="text-[16px] font-bold text-[#111111] leading-tight">testt</p>
+            <div className="flex flex-col">
+              <p className="text-[12px] text-[#71717A] font-normal leading-tight">Welcome Back</p>
+              <p className="text-[20px] font-extrabold text-[#111111] leading-tight tracking-tight mt-0.5">testt</p>
             </div>
           </div>
+
           <button onClick={() => navigate('/notifications')} className="w-[42px] h-[42px] rounded-full bg-[#FFF0E5] flex items-center justify-center relative shadow-sm border border-[#FCD8BE]/50 cursor-pointer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F07820" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -46,7 +49,7 @@ export const HomePage: React.FC = () => {
       {/* INVISIBLE SPACER TO PREVENT OVERLAP */}
       <div className="w-full h-[calc(70px+env(safe-area-inset-top))]" />
 
-      {/* PAGE CONTENT (Exact Save Point 3 Grid) */}
+      {/* PAGE CONTENT */}
       <div className="space-y-6 pt-1">
         <div>
           <h1 className="text-[26px] font-bold text-[#111111] leading-snug tracking-tight">Ready to level up today?</h1>

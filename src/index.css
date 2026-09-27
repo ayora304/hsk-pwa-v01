@@ -13,3 +13,14 @@ html, body {
   min-height: 100dvh;
   width: 100%;
 }
+
+
+/* HIDE FAKE STATUS BAR IN FULL-SCREEN MODE & ON DESKTOP/TABLET SCREENS */
+@media (display-mode: fullscreen), (display-mode: standalone), (display-mode: minimal-ui), (min-width: 480px) {
+  .mock-status-bar {
+    display: none !important;
+  }
+  .header-spacer {
+    height: calc(64px + env(safe-area-inset-top)) !important;
+  }
+}

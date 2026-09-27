@@ -42,13 +42,15 @@ export const ChatsPage: React.FC = () => {
     <div className="w-full relative pb-24">
       {activeChatId ? (
         <div className="flex flex-col h-screen w-full">
-          <div className="fixed top-0 inset-x-0 z-40 w-full max-w-[600px] mx-auto bg-white/85 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border-b border-gray-100/80 pt-[env(safe-area-inset-top)] transition-all">
+          <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
+      
+      
             <div className="px-4 py-3 flex items-center gap-3">
               <button onClick={() => setActiveChatId(null)} className="w-[40px] h-[40px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full shadow-sm cursor-pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
               <div><h1 className="text-[18px] font-bold text-[#111111] leading-tight">{chats.find(c => c.id === activeChatId)?.name}</h1><p className="text-[11px] text-[#F07820] font-medium">128 active members</p></div>
             </div>
           </div>
-          <div className="w-full flex-none h-[calc(70px+env(safe-area-inset-top))]" />
+          <div className="w-full flex-none h-[98px]" />
           <div className="flex-1 overflow-y-auto space-y-3 py-3">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex flex-col ${msg.isMe ? 'items-end' : 'items-start'}`}>
@@ -66,7 +68,9 @@ export const ChatsPage: React.FC = () => {
         </div>
       ) : (
         <div>
-          <div className="fixed top-0 inset-x-0 z-40 w-full max-w-[600px] mx-auto bg-white/85 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border-b border-gray-100/80 pt-[env(safe-area-inset-top)] transition-all">
+          <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
+      
+      
             <div className="px-4 py-3 flex items-center gap-4">
               <button onClick={() => navigate('/home')} className="w-[40px] h-[40px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full shadow-sm cursor-pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
               <div><h1 className="text-[24px] font-bold text-[#111111] tracking-tight leading-tight">Study Groups</h1><p className="text-xs text-[#888888]">30 active channels</p></div>

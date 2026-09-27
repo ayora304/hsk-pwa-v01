@@ -14,7 +14,9 @@ export const NotificationsPage: React.FC = () => {
 
   return (
     <div className="w-full relative pb-24 flex flex-col min-h-screen">
-      <div className="fixed top-0 inset-x-0 z-40 w-full max-w-[600px] mx-auto bg-white/85 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border-b border-gray-100/80 pt-[env(safe-area-inset-top)] transition-all">
+      <div className="fixed top-0 inset-x-0 w-full max-w-[600px] mx-auto transition-all z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50">
+      
+      
         <div className="px-4 py-3 flex items-center gap-4">
           <button onClick={() => navigate(-1)} className="w-[40px] h-[40px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full shadow-sm cursor-pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
           <h1 className="text-[24px] font-bold text-[#111111] tracking-tight">Notifications</h1>
