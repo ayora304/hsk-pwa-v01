@@ -1,3 +1,4 @@
+import { ChatDetailPage } from './pages/chats/ChatDetailPage';
 ﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
@@ -27,6 +28,7 @@ export const App: React.FC = () => {
           <Route path="/notes" element={<NotesPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/chats" element={<ChatsPage />} />
+          <Route path="/chats/:id" element={<ChatDetailPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/notifications" element={<NotificationsPage />} />

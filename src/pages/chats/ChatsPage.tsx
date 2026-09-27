@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface Chat {
@@ -28,50 +28,64 @@ export const ChatsPage: React.FC = () => {
     document.body.style.backgroundColor = '#ffffff';
     document.documentElement.style.backgroundColor = '#ffffff';
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', '#ffffff');
+    if (meta) meta.setAttribute('content', '#FFF0E5');
   }, []);
 
   return (
     <div className="w-full relative pb-32 min-h-screen bg-white">
       
-      {/* HEADER */}
-      <div className="fixed top-0 inset-x-0 w-full max-w-[1200px] mx-auto z-50 bg-white pt-[calc(env(safe-area-inset-top)+16px)]">
-        <div className="px-6 py-2 flex items-center justify-between">
-          <h1 className="font-extrabold text-[32px] text-[#111111] tracking-tight">Messages</h1>
-          <button className="w-10 h-10 flex items-center justify-center text-[#111111] active:scale-95 transition-transform cursor-pointer">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      {/* IMMOVABLE FIXED GLASS SHIELD HEADER */}
+      <div className="fixed top-0 inset-x-0 w-full max-w-[1200px] mx-auto z-50 bg-[#FFF0E5] pt-[env(safe-area-inset-top)] border-b border-[#FCD8BE]/50 transition-all">
+        <div className="px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => navigate('/home')} 
+              className="w-[42px] h-[42px] rounded-full bg-[#FFF0E5] flex items-center justify-center shadow-sm border border-[#FCD8BE]/50 cursor-pointer active:scale-95 transition-transform"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F07820" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mr-0.5">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <div>
+              <h1 className="text-[20px] font-extrabold text-[#111111] leading-tight tracking-tight">Messages</h1>
+            </div>
+          </div>
+
+          <button className="w-[42px] h-[42px] rounded-full bg-[#FFF0E5] flex items-center justify-center shadow-sm border border-[#FCD8BE]/50 cursor-pointer active:scale-95 transition-transform">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F07820" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
         </div>
       </div>
-      
+
       {/* INVISIBLE SPACER */}
-      <div className="w-full h-[calc(80px+env(safe-area-inset-top))]" />
+      <div className="w-full h-[calc(70px+env(safe-area-inset-top))]" />
 
       {/* CHAT LIST */}
-      <div className="px-6 flex flex-col">
+      <div className="px-4 flex flex-col pt-2">
         {CHATS.map((chat, index) => (
           <div 
             key={chat.id}
-            className={`w-full py-4 flex items-center gap-4 cursor-pointer active:opacity-70 transition-opacity ${
+            onClick={() => navigate(`/chats/${chat.id}`, { state: { chat } })}
+            className={`w-full py-3.5 flex items-center gap-4 cursor-pointer active:opacity-70 transition-opacity ${
               index !== CHATS.length - 1 ? 'border-b border-[#F5F5F7]' : ''
             }`}
           >
             {/* AVATAR & ONLINE STATUS */}
             <div className="relative shrink-0">
-              <div className="w-[56px] h-[56px] rounded-full bg-[#FFF0E5] flex items-center justify-center border border-[#FCD8BE]/50">
-                <span className="font-bold text-[20px] text-[#F07820]">{chat.initials}</span>
+              <div className="w-[52px] h-[52px] rounded-full bg-[#FFF0E5] flex items-center justify-center border border-[#FCD8BE]/50 shadow-sm">
+                <span className="font-bold text-[18px] text-[#F07820]">{chat.initials}</span>
               </div>
               {chat.isOnline && (
-                <div className="absolute bottom-0.5 right-0.5 w-[14px] h-[14px] bg-[#10B981] rounded-full border-2 border-white z-10 shadow-sm" />
+                <div className="absolute bottom-0 right-0 w-[13px] h-[13px] bg-[#10B981] rounded-full border-2 border-white z-10 shadow-sm" />
               )}
             </div>
 
             {/* CONTENT */}
             <div className="min-w-0 flex-1">
-              <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center justify-between mb-0.5">
                 <h3 className="font-bold text-[16px] text-[#111111] truncate pr-2">
                   {chat.name}
                 </h3>
@@ -81,12 +95,12 @@ export const ChatsPage: React.FC = () => {
               </div>
               
               <div className="flex items-center justify-between">
-                <p className="text-[14px] text-[#888888] truncate pr-4 leading-snug">
+                <p className="text-[14px] text-[#71717A] truncate pr-4 leading-snug">
                   {chat.message}
                 </p>
                 {chat.unread && (
-                  <div className="w-6 h-6 rounded-full bg-[#F07820] flex items-center justify-center shrink-0 shadow-sm">
-                    <span className="text-[11px] font-bold text-white leading-none mt-[1px]">
+                  <div className="w-5 h-5 rounded-full bg-[#F07820] flex items-center justify-center shrink-0 shadow-sm">
+                    <span className="text-[10px] font-bold text-white leading-none">
                       {chat.unread}
                     </span>
                   </div>
