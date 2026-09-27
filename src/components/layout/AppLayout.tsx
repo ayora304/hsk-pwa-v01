@@ -16,6 +16,17 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
+  const [simScale, setSimScale] = useState<number>(1);
+
+  const devices = {
+    responsive: { name: 'Full Screen', width: '100%', height: '100%', rounded: '0px' },
+    iphone16promax: { name: 'iPhone 16 Pro', width: '440px', height: '956px', rounded: '44px' },
+    tablet10: { name: 'Tablet 10"', width: '810px', height: '1080px', rounded: '24px' },
+    laptop16: { name: 'Laptop 16"', width: '1728px', height: '1117px', rounded: '16px' },
+  };
+
+  const currentDevice = devices[deviceMode as keyof typeof devices];
+
   useEffect(() => {
     setIsDevMenuOpen(false);
     setIsNavOpen(false);
@@ -27,16 +38,26 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (deviceMode === 'responsive') {
+        setSimScale(1);
+        return;
+      }
+      const w = parseInt(currentDevice.width);
+      const h = parseInt(currentDevice.height);
+      
+      const scaleW = (window.innerWidth * 0.95) / w;
+      const scaleH = (window.innerHeight * 0.95) / h;
+      setSimScale(Math.min(1, scaleW, scaleH));
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [deviceMode, currentDevice.width, currentDevice.height]);
+
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(`${path}/`);
-
-  const devices = {
-    responsive: { name: 'Full Screen', width: '100%', height: '100%', rounded: '0px' },
-    iphone16promax: { name: 'iPhone 16 Pro', width: '440px', height: '956px', rounded: '44px' },
-    tablet10: { name: 'Tablet 10"', width: '810px', height: '1080px', rounded: '24px' },
-    laptop16: { name: 'Laptop 16"', width: '1728px', height: '1117px', rounded: '16px' },
-  };
-
-  const currentDevice = devices[deviceMode as keyof typeof devices];
 
   const navItems = [
     { label: 'Home', path: '/home', icon: (a: boolean) => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> },
@@ -67,16 +88,31 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   };
 
   const appContent = (
-    <div className="flex-1 w-full flex flex-col relative bg-white overflow-hidden transition-colors duration-500">
+    <div className="h-full w-full flex flex-col relative bg-white overflow-hidden transition-colors duration-500">
       
       <main 
         onScroll={handleScroll}
-        className="flex-1 overflow-y-auto w-full pt-[calc(env(safe-area-inset-top,0px)+12px)] px-[24px] md:px-[30px] pb-[120px] relative"
+        className={`flex-1 overflow-y-auto overflow-x-hidden w-full px-[24px] md:px-[30px] pb-[120px] relative ${
+          deviceMode === 'iphone16promax' 
+            ? 'pt-[54px]' 
+            : 'pt-[calc(env(safe-area-inset-top,0px)+12px)]'
+        }`}
       >
         <div className="w-full max-w-[1200px] mx-auto">
           {children}
         </div>
-      </main>
+      
+      {/* Perfectly Aligned Floating Menu Tray */}
+      
+
+      
+      {/* Global Aligned Floating Menu */}
+      
+
+
+      
+      
+    </main>
 
       <div 
         className="absolute bottom-6 left-4 right-4 md:left-auto md:right-auto md:w-full md:max-w-[1200px] flex justify-end z-40 pointer-events-none mx-auto" 
@@ -161,15 +197,15 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       </div>
 
       <div 
-        className={`relative flex flex-col overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_0_80px_rgba(0,0,0,0.6)] ${
+        className={`relative flex flex-col transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_0_80px_rgba(0,0,0,0.6)] ${
           deviceMode !== 'responsive' ? 'border-[8px] border-[#222222] bg-black' : ''
         }`}
         style={{ 
           width: currentDevice.width, 
           height: currentDevice.height,
           borderRadius: currentDevice.rounded,
-          maxHeight: deviceMode !== 'responsive' ? '95vh' : '100%',
-          maxWidth: deviceMode !== 'responsive' ? '95vw' : '100%',
+          transform: deviceMode !== 'responsive' ? `scale(${simScale})` : 'none',
+          transformOrigin: 'center center',
         }}
       >
         {deviceMode === 'iphone16promax' && (
@@ -178,7 +214,9 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           </div>
         )}
 
-        {appContent}
+        <div className="w-full h-full rounded-[inherit] overflow-hidden flex flex-col">
+           {appContent}
+        </div>
       </div>
     </div>
   );

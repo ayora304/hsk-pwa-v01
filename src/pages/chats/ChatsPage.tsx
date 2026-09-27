@@ -1,67 +1,177 @@
-﻿import React from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getStoredChats, getStoredMessages, addMessageToStore, ChatGroup, Message } from '../../data/chatsData';
 
 export const ChatsPage: React.FC = () => {
-  const navigate = useNavigate();
+  useEffect(() => {
+    document.body.style.backgroundColor = '#F07820';
+    document.documentElement.style.backgroundColor = '#F07820';
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', '#F07820');
+  }, []);
 
-  const chatChannels = [
-    { id: 'hsk1-vocabulary', name: '# hsk1-vocabulary', time: '10:30 AM', unread: 2, lastMsg: 'Welcome to HSK 1 study group!', isAi: false },
-    { id: 'pinyin-pronunciation', name: 'pinyin-pronunciation-qna', time: '11:15 AM', unread: 0, lastMsg: 'How do I distinguish 3rd and 4th ...', isAi: true },
-    { id: 'hsk2-grammar', name: '# hsk2-grammar', time: 'Yesterday', unread: 1, lastMsg: 'Practice measure words for da...', isAi: false },
-    { id: 'general-discussion', name: '# general-discussion', time: 'Sep 19', unread: 0, lastMsg: 'Anyone taking the test next month?', isAi: false },
-  ];
+  const navigate = useNavigate();
+  const [chats, setChats] = useState<ChatGroup[]>([]);
+  const [activeChatId, setActiveChatId] = useState<string | null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [inputVal, setInputVal] = useState('');
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setChats(getStoredChats());
+  }, [activeChatId]);
+
+  useEffect(() => {
+    if (activeChatId) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, activeChatId]);
+
+  const openChat = (id: string) => {
+    setActiveChatId(id);
+    setMessages(getStoredMessages(id));
+  };
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputVal.trim() || !activeChatId) return;
+
+    const newMsg: Message = {
+      id: Date.now().toString(),
+      sender: 'You',
+      text: inputVal.trim(),
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      isMe: true
+    };
+
+    addMessageToStore(activeChatId, newMsg);
+    setMessages(prev => [...prev, newMsg]);
+    setInputVal('');
+  };
+
+  const activeGroup = chats.find(c => c.id === activeChatId);
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-[34px] font-bold text-[#111111] tracking-tight">Chats</h1>
-        <button className="w-[22px] h-[22px] flex items-center justify-center active:opacity-70">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5">
-            <path d="M12 5v14M5 12h14"></path>
-          </svg>
-        </button>
-      </div>
-
-      {/* Chat List W 330 P 16/0/16/0 per row */}
-      <div className="w-[330px]">
-        {chatChannels.map((channel, idx) => (
-          <div
-            key={channel.id}
-            onClick={() => navigate(`/chats/${channel.id}`)}
-            className={`py-4 flex items-center gap-4 cursor-pointer active:opacity-60 ${
-              idx !== chatChannels.length - 1 ? 'border-b border-[#E5E5E5]' : ''
-            }`}
-          >
-            <div className="w-12 h-12 rounded-full bg-[#F5F5F5] flex items-center justify-center flex-shrink-0">
-              {channel.isAi ? (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="2">
-                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"></path>
+    <div className="flex flex-col w-full max-w-[600px] mx-auto animate-in fade-in duration-300 relative min-h-screen">
+      {activeChatId ? (
+        /* CHAT DETAIL ROOM VIEW */
+        <div className="flex flex-col h-[calc(100dvh-20px)] w-full">
+          {/* Sticky Header */}
+          <div className="sticky top-0 z-20 w-full pt-[max(12px,env(safe-area-inset-top))] pb-3 bg-transparent border-b border-[#EEEEEE] flex-none">
+            <div className="absolute -top-[500px] -left-8 -right-8 bottom-0 bg-gradient-to-b from-[#F07820] via-[#FFF0E5] to-white/95 pointer-events-none -z-10" />
+            <div className="flex items-center gap-3 px-1">
+              <button 
+                onClick={() => setActiveChatId(null)} 
+                className="w-[44px] h-[44px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full active:scale-95 transition-transform shadow-sm cursor-pointer"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
-              ) : (
-                <span className="text-xl font-bold text-[#888888]">#</span>
-              )}
-            </div>
-            
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-0.5">
-                <p className="text-[16px] font-bold text-[#111111] truncate pr-2">{channel.name}</p>
-                <span className={`text-[12px] whitespace-nowrap ${channel.unread > 0 ? 'text-[#F07820] font-medium' : 'text-[#AAAAAA]'}`}>
-                  {channel.time}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-[14px] text-[#888888] truncate">{channel.lastMsg}</p>
-                {channel.unread > 0 && (
-                  <span className="w-[22px] h-[22px] rounded-full bg-[#F07820] text-white text-[12px] font-bold flex items-center justify-center ml-2 flex-shrink-0">
-                    {channel.unread}
-                  </span>
-                )}
+              </button>
+              <div>
+                <h1 className="text-[20px] font-bold text-[#111111] leading-tight">{activeGroup?.name}</h1>
+                <p className="text-[12px] text-[#F07820] font-medium">128 active members</p>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+
+          {/* Messages Stream */}
+          <div className="flex-1 overflow-y-auto space-y-3 px-1 py-3 overscroll-contain">
+            {messages.map((msg) => (
+              <div key={msg.id} className={`flex flex-col ${msg.isMe ? 'items-end' : 'items-start'}`}>
+                {!msg.isMe && (
+                  <span className="text-[11px] font-bold text-[#888888] ml-2 mb-1">{msg.sender}</span>
+                )}
+                <div 
+                  className={`max-w-[80%] p-3.5 rounded-[18px] text-[14px] leading-relaxed ${
+                    msg.isMe 
+                      ? 'bg-[#F07820] text-white rounded-br-xs shadow-sm' 
+                      : 'bg-[#F5F5F7] text-[#111111] border border-[#EEEEEE] rounded-bl-xs'
+                  }`}
+                >
+                  {msg.text}
+                </div>
+                <span className="text-[10px] text-[#AAAAAA] mt-1 px-1">{msg.time}</span>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Message Input Box */}
+          <form onSubmit={handleSend} className="flex items-center gap-2 pt-2 pb-24 flex-none bg-white">
+            <input 
+              type="text"
+              value={inputVal}
+              onChange={(e) => setInputVal(e.target.value)}
+              placeholder={`Message ${activeGroup?.name}...`}
+              className="flex-1 bg-[#F5F5F7] border border-[#EEEEEE] rounded-full py-3.5 px-4 text-sm text-[#111111] placeholder-[#999999] focus:outline-none focus:border-[#F07820]"
+            />
+            <button 
+              type="submit"
+              className="w-[44px] h-[44px] rounded-full bg-[#F07820] text-white flex items-center justify-center shadow-md active:scale-95 transition-transform cursor-pointer flex-shrink-0"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+      ) : (
+        /* CHATS LIST VIEW */
+        <div className="w-full pb-28">
+          {/* PINNED STICKY HEADER */}
+          <div className="sticky top-0 z-20 w-full pt-[max(12px,env(safe-area-inset-top))] pb-3 mb-3 bg-transparent">
+            <div className="absolute -top-[500px] -left-8 -right-8 bottom-0 bg-gradient-to-b from-[#F07820] via-[#FFF0E5] to-white/95 pointer-events-none -z-10 rounded-b-[24px]" />
+            <div className="flex items-center gap-4 px-1">
+              <button 
+                onClick={() => navigate('/home')} 
+                className="w-[44px] h-[44px] flex items-center justify-center bg-white border border-[#EEEEEE] rounded-full active:scale-95 transition-transform shadow-sm cursor-pointer"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <div>
+                <h1 className="text-[28px] font-bold text-[#111111] tracking-tight leading-tight">Study Groups</h1>
+                <p className="text-xs text-[#888888]">30 active channels</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 30 Chat Groups List - Scrolls Under Pinned Header */}
+          <div className="space-y-2.5 w-full px-1">
+            {chats.map((group) => (
+              <div 
+                key={group.id} 
+                onClick={() => openChat(group.id)}
+                className="w-full p-3.5 rounded-[20px] bg-white border border-[#F0F0F0] shadow-sm hover:shadow-md flex items-center justify-between cursor-pointer active:scale-[0.99] transition-all"
+              >
+                <div className="flex items-center gap-3.5 min-w-0">
+                  <div className="w-11 h-11 rounded-full bg-[#FFF0E5] flex items-center justify-center font-bold text-[#F07820] text-base flex-shrink-0 border border-[#FCD8BE]/40">
+                    #
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-[#111111] text-[15px] truncate">{group.name}</h3>
+                      <span className="text-[10px] font-semibold text-[#888888] bg-[#F5F5F7] px-2 py-0.5 rounded-full flex-shrink-0">{group.category}</span>
+                    </div>
+                    <p className="text-[13px] text-[#777777] truncate mt-0.5">{group.lastMsg}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-end gap-1.5 flex-shrink-0 ml-2">
+                  <span className="text-[11px] font-medium text-[#AAAAAA]">{group.time}</span>
+                  {group.unread > 0 && (
+                    <span className="px-1.5 py-0.5 rounded-full bg-[#F07820] text-white text-[10px] font-bold">
+                      {group.unread} new
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

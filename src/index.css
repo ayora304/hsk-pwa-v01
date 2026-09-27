@@ -1,0 +1,15 @@
+﻿
+html, body { overflow-x: hidden; }
+
+
+/* Global back-screen canvas color for overscroll/rubber-banding */
+html, body {
+  background-color: #ffffff;
+}
+
+/* Ensures the actual app UI remains solid white and on top */
+#root {
+  background-color: #ffffff !important;
+  min-height: 100dvh;
+  width: 100%;
+}
