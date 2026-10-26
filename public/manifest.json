@@ -3,16 +3,16 @@
   "name": "HSK Learning App",
   "icons": [
     {
-      "src": "/pwa-192x192.png",
+      "src": "/panda-icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/pwa-512x512.png",
+      "src": "/panda-icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "start_url": "/",
