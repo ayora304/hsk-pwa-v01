@@ -1,0 +1,37 @@
+.study-board { height: 100dvh; display: flex; flex-direction: column; background: #fffdf8; color: #292524; font-family: system-ui, sans-serif; }
+.board-header { padding: max(12px, env(safe-area-inset-top)) 20px 12px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #eaded3; }
+.board-heading { flex: 1; }
+.board-heading h1 { font-size: 19px; font-weight: 750; margin: 0; }
+.board-heading p { font-size: 12px; color: #78716c; margin: 2px 0 0; }
+.study-board button, .board-dialog a { padding: 10px 14px; border-radius: 12px; background: white; border: 1px solid #e7dfd8; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; }
+.study-board button:disabled { opacity: .5; cursor: wait; }
+.study-board .board-primary { background: #f07820; border-color: #f07820; color: white; display: inline-block; }
+.study-board button:focus-visible, .study-board a:focus-visible, .study-board input:focus-visible { outline: 3px solid #8b5cf6; outline-offset: 2px; }
+.board-practice { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 10px 20px; font-size: 13px; background: #fff4ea; }
+.board-practice label { display: flex; align-items: center; gap: 8px; }
+.board-practice input { width: 48px; padding: 4px; text-align: center; font-size: 22px; background: white; border: 1px solid #e7dfd8; border-radius: 8px; }
+.board-tip { color: #78716c; font-size: 12px; }
+.board-canvas { flex: 1; min-height: 0; position: relative; }
+.board-canvas .excalidraw .App-toolbar { position: relative; }
+.study-board .board-toolbar-grip { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); height: 23px; padding: 1px 12px; background: #eee9ff; color: #62509b; border: 1px solid #ddd5f2; border-radius: 8px 8px 0 0; touch-action: none; cursor: grab; white-space: nowrap; font-size: 11px; pointer-events: auto; }
+.study-board .board-toolbar-grip:active { cursor: grabbing; }
+.board-canvas .excalidraw .shapes-section { margin-top: 16px; }
+.board-pinyin { color: #9c6c51; }
+.board-review-notice { padding: 10px 20px; background: #fff4df; display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+.board-review-image { display: block; width: 100%; max-height: 220px; object-fit: contain; background: white; border: 1px solid #eaded3; border-radius: 16px; margin: 16px 0; }
+.board-review-target { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.board-review-target input { width: 52px; border: 1px solid #eaded3; border-radius: 8px; padding: 6px; font-size: 22px; text-align: center; }
+.board-review-result { margin-top: 24px; border-top: 1px solid #eaded3; padding-top: 20px; }
+.board-review-result h3 { font-size: 22px; font-weight: 750; color: #9c501c; }
+.board-review-result h4 { font-size: 14px; font-weight: 700; margin-top: 16px; }
+.board-review-result ul { list-style: disc; padding-left: 20px; font-size: 14px; line-height: 1.7; color: #57534e; }
+.board-overlay { position: fixed; inset: 0; z-index: 100; background: #29252480; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.board-dialog { position: relative; background: #fffdf8; padding: 32px; border-radius: 24px; width: 100%; max-width: 480px; max-height: 90dvh; overflow-y: auto; box-shadow: 0 20px 80px #0003; }
+.board-dialog h2 { font-size: 27px; font-weight: 750; margin: 12px 0; }
+.board-dialog p { font-size: 14px; line-height: 1.65; margin: 14px 0; color: #78716c; }
+.board-dialog .board-eyebrow { color: #c65b12; font-size: 10px; font-weight: 750; letter-spacing: 1px; padding-right: 28px; }
+.board-dialog .board-close { position: absolute; right: 16px; top: 16px; }
+.board-dialog form { display: grid; gap: 10px; margin-top: 24px; }
+.board-dialog form label { font-size: 14px; font-weight: 650; }
+.board-dialog form input { border: 1px solid #d6c8bd; padding: 12px; border-radius: 10px; width: 100%; font-size: 13px; }
+@media (max-width: 600px) { .board-header { gap: 7px; padding-left: 10px; padding-right: 10px; flex-wrap: wrap; } .board-heading h1 { font-size: 16px; } .board-header button { padding: 9px; font-size: 12px; } .board-practice { gap: 8px; padding: 8px 10px; } .board-tip { display: none; } .board-dialog { padding: 24px; } }

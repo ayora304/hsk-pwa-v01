@@ -13,6 +13,8 @@ import { TranslatePage } from './pages/translate/TranslatePage';
 import { ClassroomPage } from './pages/classroom/ClassroomPage';
 import { NotesPage } from './pages/notes/NotesPage';
 import { QuizPage } from './pages/quiz/QuizPage';
+import { lazy, Suspense } from 'react';
+const WhiteboardPage = lazy(() => import('./pages/whiteboard/WhiteboardPage'));
 
 export const App: React.FC = () => {
   return (
@@ -27,6 +29,7 @@ export const App: React.FC = () => {
           <Route path="/classroom" element={<ClassroomPage />} />
           <Route path="/notes" element={<NotesPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/whiteboard" element={<Suspense fallback={<p role="status">Loading whiteboard…</p>}><WhiteboardPage /></Suspense>} />
           <Route path="/chats" element={<ChatsPage />} />
           <Route path="/chats/:id" element={<ChatDetailPage />} />
           <Route path="/stats" element={<StatsPage />} />

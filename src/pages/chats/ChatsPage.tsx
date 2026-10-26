@@ -62,6 +62,7 @@ export const ChatsPage: React.FC = () => {
 
       {/* INVISIBLE SPACER */}
       <div className="w-full h-[calc(70px+env(safe-area-inset-top))]" />
+      <button onClick={() => navigate('/whiteboard')} className="w-full p-4 my-4 bg-[#FFF0E5] rounded-2xl text-left font-semibold cursor-pointer">Study whiteboard ↗<span className="block text-sm font-normal mt-1 text-[#777777]">Sketch ideas and open a live session with classmates.</span></button>
 
       {/* CHAT LIST */}
       <div className="px-4 flex flex-col pt-2">

@@ -34,6 +34,7 @@ export const ClassroomPage: React.FC = () => {
 
       {/* PAGE CONTENT */}
       <div className="space-y-6">
+        <button onClick={() => navigate('/whiteboard')} className="w-full p-4 bg-[#FFF0E5] rounded-2xl text-left font-semibold cursor-pointer">Open study whiteboard ↗<span className="block text-sm font-normal mt-1 text-[#777777]">Discuss a lesson or practice Chinese characters.</span></button>
         <div className="w-full p-5 bg-white rounded-[24px] border border-[#EEEEEE] shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-[#059669] bg-[#ECFDF5] px-3 py-1 rounded-full">ACTIVE LESSON</span>

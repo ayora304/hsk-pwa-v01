@@ -76,6 +76,11 @@ export const HomePage: React.FC = () => {
       <div className="w-full h-[calc(70px+env(safe-area-inset-top))]" />
 
       <div className="space-y-6 pt-1">
+        <button onClick={() => navigate('/whiteboard')} className="w-full text-left p-5 rounded-[24px] bg-[#FFF0E5] border border-[#FCD8BE] cursor-pointer">
+          <span className="text-xs font-bold text-[#F07820]">STUDY TOGETHER · EXCALIDRAW</span>
+          <span className="block text-xl font-bold mt-1">Study whiteboard ↗</span>
+          <span className="block text-sm text-[#666666] mt-1">Sketch ideas, discuss lessons, and practice Chinese characters.</span>
+        </button>
         <div>
           <h1 className="text-[26px] font-bold text-[#111111] leading-snug tracking-tight">Ready to level up today?</h1>
         </div>

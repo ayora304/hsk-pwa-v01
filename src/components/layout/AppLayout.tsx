@@ -73,6 +73,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     </div>
   );
 
+  if (location.pathname === '/whiteboard') return <>{children}</>;
+
   return (
     <div className="fixed inset-0 bg-[#0a0a0a] flex items-center justify-center font-sans">
       <div className="absolute top-24 right-0 z-50 flex items-start">
