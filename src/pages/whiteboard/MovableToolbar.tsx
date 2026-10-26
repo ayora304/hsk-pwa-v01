@@ -25,9 +25,10 @@ export function MovableToolbar({ container }: { container: React.RefObject<HTMLD
   };
   useEffect(() => {
     if (!toolbar) return;
+    toolbar.style.transform = `translate(${position.current.x}px, ${position.current.y}px)`;
     const observer = new ResizeObserver(() => move(0, 0));
     observer.observe(container.current!);
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); toolbar.style.transform = ''; };
   }, [toolbar]);
   if (!toolbar) return null;
   return createPortal(<button className="board-toolbar-grip" aria-label="Move drawing toolbar" title="Drag to move toolbar. Use arrow keys when focused; double-click to reset."

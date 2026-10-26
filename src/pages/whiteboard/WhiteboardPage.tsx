@@ -123,7 +123,7 @@ export default function WhiteboardPage() {
       <span className="board-pinyin">{character && pronunciation(character)}</span>
       <button onClick={addPractice} disabled={!api}>+ Writing grid</button>
       <button onClick={prepareReview} disabled={!api}>✦ Rate writing</button>
-      <span className="board-tip">Trace the first character, then try it yourself.</span>
+      <span className="board-tip">Trace, then try it yourself. Select your strokes to rate your writing.</span>
     </section>
     {reviewError && !reviewImage && <div className="board-review-notice" role="alert">{reviewError}<button onClick={() => setReviewError('')} aria-label="Dismiss message">✕</button></div>}
     <div className="board-canvas" ref={canvasRef}>
