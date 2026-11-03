@@ -1,0 +1,186 @@
+.lingora-dashboard {width:100%;min-width:0}
+.sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.lingora-topbar {display:flex;align-items:center;gap:24px;margin-bottom:24px}
+.lingora-search-wrap {position:relative;flex:1;min-width:0}
+.lingora-search {display:flex;align-items:center;gap:10px;height:44px;padding:0 16px;background:var(--card);border:1px solid var(--line);border-radius:999px;color:var(--mut)}
+.lingora-search:focus-within {border-color:var(--pri);box-shadow:0 0 0 3px #1677ff14}
+.lingora-search input {min-width:0;flex:1;border:0;background:transparent;outline:0!important;color:var(--text);font-size:13px}
+.lingora-search input::placeholder {color:var(--mut)}
+.lingora-top-stats {display:flex;align-items:center;gap:21px}
+.lingora-top-stats a {display:flex;align-items:center;gap:7px;color:var(--text);min-height:44px;font-size:15px}
+.lingora-top-stats .flame {color:#F38A38;fill:#FFCE7A}.lingora-top-stats .blue {color:#268DDE}
+.lingora-bell {width:44px;justify-content:center;border-radius:50%}.lingora-bell:hover {background:var(--hov)}
+.lingora-search-results {position:absolute;top:52px;left:0;right:0;z-index:10;max-height:360px;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 16px 40px #0E1B3320;padding:8px}
+.lingora-search-caption {display:flex;align-items:center;justify-content:space-between;padding-left:12px;color:var(--mut);font-size:10px;letter-spacing:1px}
+.lingora-search-caption button {display:grid;place-items:center;width:44px;height:44px;border:0;background:none;color:var(--mut)}
+.lingora-search-results>a {display:flex;align-items:center;justify-content:space-between;color:var(--text);padding:12px;border-radius:10px}
+.lingora-search-results>a:hover {background:var(--hov)}
+.lingora-search-results b {display:block;font-size:13px}.lingora-search-results small {display:block;color:var(--mut);font-size:11px;margin-top:3px}
+.lingora-search-results p {font-size:13px;padding:12px;color:var(--mut)}
+.lingora-columns {display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:22px;align-items:start}
+.lingora-content {display:flex;flex-direction:column;gap:26px;min-width:0}
+.lingora-hero {isolation:isolate;position:relative;min-height:314px;overflow:hidden;border-radius:24px;background:linear-gradient(110deg,#B8E2FF,#95D1FD 55%,#89CBFD)}
+.lingora-hero-art {position:absolute;right:0;bottom:0;width:65%;height:100%;object-fit:cover;object-position:center bottom;mask-image:linear-gradient(90deg,transparent, #000 35%);z-index:-1}
+.lingora-language {position:absolute;right:14px;top:14px;display:flex;align-items:center;gap:7px;border-radius:999px;padding:7px 10px;background:#FFFFFFDA;color:#22344D;font-size:11px;font-weight:600;min-height:36px}
+.lingora-language>span {display:grid;place-items:center;background:#E6524C;color:white;border-radius:50%;width:23px;height:23px;font-size:13px}
+.lingora-hero-copy {padding:33px 30px 30px;width:65%;color:#0E1B33}
+.lingora-hero h1 {font-size:clamp(27px,2.6vw,39px);font-weight:800;letter-spacing:-1.1px;line-height:1.17;margin:0;overflow-wrap:anywhere}
+.lingora-hero h1 span {color:#0867E9}
+.lingora-hero p {margin:18px 0 22px;font-size:15px;line-height:1.5;color:#263D59}
+.lingora-hero .lingora-button {background:#1677FF;color:white;box-shadow:0 9px 22px -10px #1677FF99}
+.lingora-section-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 13px}
+.lingora-section-heading h2 {margin:0;font-size:16px;font-weight:750;letter-spacing:-.3px}
+.lingora-section-heading>a {display:flex;align-items:center;gap:3px;font-size:12px;font-weight:600;color:var(--link);min-height:28px}
+.lingora-lesson {display:flex;align-items:center;gap:16px;padding:12px;border:1px solid var(--line);background:var(--card);border-radius:20px;min-width:0}
+.lingora-lesson>img {width:130px;height:84px;object-fit:cover;border-radius:13px;flex:none}
+.lingora-lesson-info {flex:1;min-width:0}.lingora-lesson h3 {margin:0;font-size:15px;font-weight:700;letter-spacing:-.25px}
+.lingora-lesson p {font-size:11px;line-height:1.5;color:var(--mut);margin:6px 0 12px}
+.lingora-progress-line {display:flex;align-items:center;gap:12px}.lingora-progress-line b {font-size:11px;font-weight:600}
+.lingora-dashboard progress {display:block;appearance:none;border:0;height:6px;flex:1;min-width:0;width:100%;border-radius:5px;overflow:hidden;background:var(--soft);color:var(--pri)}
+.lingora-dashboard progress::-webkit-progress-bar {background:var(--soft);border-radius:5px}
+.lingora-dashboard progress::-webkit-progress-value {background:var(--pri);border-radius:5px}
+.lingora-dashboard progress::-moz-progress-bar {background:var(--pri);border-radius:5px}
+.lingora-lesson .lesson-start {padding:0 19px;font-size:12px}
+.lingora-skills {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.lingora-skill {position:relative;display:flex;align-items:center;gap:10px;min-height:90px;padding:13px 10px;border-radius:16px;color:#182A45;transition:transform .18s,box-shadow .18s}
+.lingora-skill:hover,.lingora-resources>a:hover {transform:translateY(-2px);box-shadow:0 8px 18px #14509112}
+.lingora-skill.purple {background:#EEEAFF}.lingora-skill.pink {background:#FFE9E9}.lingora-skill.green {background:#E6F8EE}.lingora-skill.orange {background:#FFF0E3}
+.lingora-skill-icon {display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#8B7CF6;color:white}
+.pink .lingora-skill-icon {background:#EF777D}.green .lingora-skill-icon {background:#2BB673}.orange .lingora-skill-icon {background:#F49345}
+.lingora-skill b {display:block;font-size:11px;font-weight:750;letter-spacing:-.2px}.lingora-skill small {display:block;margin-top:5px;font-size:9px;line-height:1.4;color:#566780}
+.skill-arrow {position:absolute;bottom:9px;right:10px;color:#64738B}
+.lingora-resources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.lingora-resources>a {display:flex;gap:9px;align-items:center;min-height:74px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;color:var(--text);transition:transform .18s,box-shadow .18s}
+.lingora-resource-icon {width:32px;height:32px;flex:none;border-radius:50%;background:var(--hov);color:var(--link);display:grid;place-items:center}
+.lingora-resources b {display:block;font-size:11px;font-weight:650}.lingora-resources small {display:block;font-size:10px;color:var(--mut);margin-top:5px}.lingora-resources>a>svg {margin-left:auto;flex:none;color:var(--mut)}
+.lingora-footer {margin:0;text-align:center;font-size:11px;color:var(--mut)}
+.lingora-right {display:flex;flex-direction:column;gap:16px;min-width:0}
+.lingora-card {border:1px solid var(--line);border-radius:20px;padding:18px 16px;background:var(--card)}
+.lingora-card-heading {display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:13px}
+.lingora-card-heading h2 {margin:0;font-size:14px;font-weight:750;letter-spacing:-.2px}
+.lingora-card-heading>button {display:flex;align-items:center;gap:2px;min-height:30px;border:0;padding:0 3px;color:var(--link);background:transparent;font-size:12px;font-weight:600}
+.lingora-goal {display:flex;align-items:center;gap:12px}
+.lingora-ring {width:112px;height:112px;flex:none;border-radius:50%;padding:9px;transform:rotate(0)}
+.lingora-ring>div {width:100%;height:100%;border-radius:50%;background:var(--card);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.lingora-ring b {font-size:20px;line-height:1.2;white-space:nowrap;font-weight:800}.lingora-ring small {font-size:10px;color:var(--mut);font-weight:600}.lingora-ring span {font-size:10px;color:var(--mut);margin-top:3px}
+.lingora-goal-copy b {font-size:12px}.lingora-goal-copy p {font-size:11px;color:var(--mut);line-height:1.5;margin:6px 0 0}
+.lingora-days {display:flex;justify-content:space-between;margin-top:16px}
+.lingora-days>div {display:flex;flex-direction:column;align-items:center;gap:6px;font-size:9px;color:var(--mut)}
+.lingora-days span {display:grid;place-items:center;width:18px;height:18px;border:1.5px solid var(--bl);border-radius:50%}
+.lingora-days .done span {background:var(--pri);border-color:var(--pri);color:#fff}
+.lingora-goal-note {font-size:9px;color:var(--mut);text-align:center;line-height:1.5;margin:12px 0 0}
+.lingora-pill {display:flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:10px;color:var(--mut);white-space:nowrap}
+.lingora-progress-rows {display:flex;flex-direction:column;gap:3px}
+.lingora-progress-rows>a {display:flex;align-items:center;gap:9px;color:var(--text);padding:8px 5px;min-height:42px;border-radius:10px;font-size:11px}
+.lingora-progress-rows>a:nth-child(2) {background:var(--hov)}
+.lingora-progress-rows>a:hover {background:var(--hov)}
+.lingora-stat-icon {width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#EDF3FF;color:#3685EB;flex:none}
+.lingora-stat-icon.gold {color:#AE7000;background:#FFF1CC}.lingora-stat-icon.purple {color:#8663D4;background:#F0EAFF}.lingora-stat-icon.green {color:#218B58;background:#E3F7EB}
+.lingora-progress-rows b {margin-left:auto;font-size:12px}
+.lingora-progress-link {display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:var(--link);border-top:1px solid var(--line);padding-top:14px;margin-top:10px;min-height:32px}
+.lingora-reward {position:relative;display:flex;align-items:center;flex-direction:column;border:1px solid var(--line);border-radius:20px;background:var(--hov);padding:10px 16px 16px;color:var(--text);overflow:hidden}
+.lingora-reward>img {height:104px;width:128px;object-fit:contain}
+.lingora-reward>p {text-align:center;font-size:12px;line-height:1.65;color:var(--mut);margin:2px 0 14px}.lingora-reward b {font-size:14px;color:var(--text)}
+.lingora-reward>div {display:flex;align-items:center;gap:10px;width:100%;font-size:10px;color:var(--mut)}
+.lingora-reward-arrow {display:grid;place-items:center;flex:none;width:30px;height:30px;background:var(--card);color:var(--link);border-radius:50%;box-shadow:0 2px 8px #1677ff11}
+.lingora-dialog {width:min(420px,calc(100% - 32px));padding:26px;border:1px solid var(--line);border-radius:22px;background:var(--card);color:var(--text)}
+.lingora-dialog p {font-size:13px;line-height:1.6;color:var(--mut)}
+.lingora-dialog label {display:flex;flex-direction:column;gap:8px;font-size:13px;margin:22px 0}
+.lingora-dialog select {height:46px;padding:0 12px;background:var(--bg);border:1px solid var(--bl);border-radius:10px;color:var(--text)}
+.lingora-dialog .lingora-button {width:100%}
+@media(min-width:1450px) {.lingora-columns {grid-template-columns:minmax(0,1fr) 300px;gap:28px}.lingora-hero {min-height:350px}.lingora-hero-copy {padding:42px 38px}.lingora-skill {min-height:96px;padding:16px}.lingora-skill b {font-size:13px}.lingora-skill small {font-size:11px}.lingora-skill-icon {width:42px;height:42px}.lingora-card {padding:22px}.lingora-resources b {font-size:13px}.lingora-resources small {font-size:11px}}
+@media(max-width:1200px) {.lingora-columns {grid-template-columns:minmax(0,1fr) 240px;gap:18px}.lingora-skills {grid-template-columns:repeat(2,minmax(0,1fr))}.lingora-skill {min-height:72px;padding:12px}.lingora-skill b {font-size:12px}.lingora-skill small {font-size:10px}.lingora-resources {grid-template-columns:1fr}.lingora-resources>a {min-height:60px}.lingora-hero-copy {padding-left:24px}.lingora-lesson {gap:10px}.lingora-lesson>img {width:90px;height:82px}.lingora-lesson .lesson-start {padding:0 14px}.lingora-card {padding:16px 13px}.lingora-goal {gap:8px}.lingora-ring {width:100px;height:100px}.lingora-hero h1 {font-size:29px}}
+@media(max-width:1000px) {.lingora-columns {grid-template-columns:minmax(0,1fr)}.lingora-right {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.lingora-reward {grid-column:1/-1;display:grid;grid-template-columns:100px 1fr 160px;gap:16px;padding:12px 20px}.lingora-reward>img {width:100px;height:85px}.lingora-reward>p {margin:0;text-align:left}.lingora-skills {grid-template-columns:repeat(4,minmax(0,1fr))}.lingora-skill {flex-direction:column;align-items:flex-start;gap:9px;min-height:112px}.lingora-content {gap:22px}.lingora-resources {grid-template-columns:repeat(3,minmax(0,1fr))}.lingora-resources>a {padding:10px;gap:6px}.lingora-resource-icon {width:27px;height:27px}.lingora-resources>a>svg {display:none}.lingora-hero-copy {width:64%}.lingora-hero {min-height:310px}}
+@media(max-width:700px) {.lingora-topbar {gap:10px;margin-bottom:18px}.lingora-top-stats {gap:10px}.lingora-top-stats a {font-size:12px;gap:3px}.lingora-top-stats svg {width:19px}.lingora-bell {width:30px}.lingora-search {padding:0 12px}.lingora-search input {font-size:11px}.lingora-hero h1 {font-size:29px}.lingora-hero-copy {padding:50px 22px 24px;width:72%}.lingora-hero p {font-size:13px;margin:14px 0 20px}.lingora-hero {min-height:304px;border-radius:20px}.lingora-hero-art {width:72%;opacity:.95}.lingora-language {top:10px;right:10px;font-size:10px;padding:5px 8px;min-height:30px}.lingora-hero .lingora-button {font-size:12px;padding:0 17px}.lingora-skills {grid-template-columns:repeat(2,minmax(0,1fr))}.lingora-skill {flex-direction:row;align-items:center;min-height:78px;gap:10px}.lingora-resources {grid-template-columns:1fr}.lingora-resources>a {min-height:64px;gap:12px;padding:12px}.lingora-resources b {font-size:13px}.lingora-resource-icon {width:34px;height:34px}.lingora-resources>a>svg {display:block}.lingora-right {grid-template-columns:1fr}.lingora-card {padding:20px}.lingora-goal {justify-content:flex-start;gap:20px}.lingora-ring {width:112px;height:112px}.lingora-goal-copy b {font-size:14px}.lingora-goal-copy p {font-size:12px;max-width:150px}.lingora-days>div {font-size:11px}.lingora-days span {width:22px;height:22px}.lingora-goal-note {font-size:10px}.lingora-progress-rows>a {font-size:13px;min-height:47px}.lingora-reward {display:flex;gap:0;padding:14px 20px 20px}.lingora-reward>img {width:130px;height:104px}.lingora-reward>p {text-align:center;margin:4px 0 16px}.lingora-section-heading h2 {font-size:15px}.lingora-section-heading>a,.lingora-card-heading>button {min-height:44px}.lingora-section-heading {margin-bottom:8px}.lingora-top-stats>a:nth-child(2) {display:none}}
+@media(max-width:380px) {.lingora-lesson {flex-wrap:wrap}.lingora-lesson .lesson-start {width:100%}.lingora-lesson>img {width:85px}.lingora-skill-icon {width:30px;height:30px}.lingora-skill {gap:7px}.lingora-skill b {font-size:11px}.lingora-hero-copy {padding-left:18px}.lingora-hero h1 {font-size:26px}}
+/* Keep the supplied illustrations intact at wide and narrow aspect ratios. */
+.lingora-hero-art {object-fit:contain;object-position:right bottom}
+.lingora-reward>img {width:100px;height:112px;object-fit:cover;object-position:left;clip-path:inset(0 0 12% 0)}
+@media(max-width:1000px) and (min-width:701px) {.lingora-reward>img {width:76px;height:86px}}
+.lingora-hero-art {width:62%;object-fit:cover;object-position:center center}
+@media(max-width:700px) {.lingora-hero-art {width:68%;object-position:60% center}}
+@media(max-width:700px) {
+  .lingora-hero::after {content:'';position:absolute;inset:0;background:linear-gradient(90deg,#B8E2FF 0%,#B8E2FFED 35%,#B8E2FF55 68%,transparent);z-index:0;pointer-events:none}
+  .lingora-hero-copy {position:relative;z-index:1;width:100%}
+  .lingora-hero h1 {max-width:88%;font-size:28px}
+  .lingora-language {z-index:2}
+}
+.lesson-mobile-icon {display:none}
+@media(max-width:700px) {
+  .is-home .lingora-lesson::before {display:none}
+  .is-home .lesson-mobile-icon {position:absolute;left:13px;top:15px;width:39px;height:40px;background:#267CF3;border-radius:12px;display:grid;place-items:center;color:white}
+}
+@media(max-width:700px) {
+  .is-home .lingora-hero-art {mask-image:linear-gradient(90deg,transparent,#000 38%),linear-gradient(180deg,transparent,#000 24%);mask-composite:intersect}
+  .is-home .lingora-mobile-greeting {max-width:100%}
+  .is-home .lingora-content>.lingora-resources-section {display:none}
+}
+.lesson-chevron {display:none}
+@media(max-width:700px) {.is-home .lesson-play {display:none}.is-home .lesson-chevron {display:block}}
+/* Progress sidebar refinement, grounded in the supplied card reference. */
+.lingora-right {gap:18px}
+.lingora-right>.lingora-card {padding:18px 17px;border-color:color-mix(in srgb,var(--line) 70%,transparent);border-radius:22px;box-shadow:0 4px 18px #16395703}
+.lingora-right .lingora-card-heading {margin-bottom:18px}
+.lingora-right .lingora-card-heading h2 {font-size:14px;letter-spacing:-.25px}
+.lingora-right .lingora-card-heading>button {min-height:32px;padding:0 0 0 8px;gap:4px}
+.lingora-goal {gap:14px;align-items:center}
+.lingora-ring {position:relative;width:120px;height:120px;padding:0;background:transparent;flex:none}
+.lingora-ring-chart {position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
+.lingora-ring-chart circle {fill:none;stroke-width:8;stroke-linecap:round}
+.goal-ring-track {stroke:var(--soft)}
+.goal-ring-fill {stroke:var(--pri);transition:stroke-dasharray .3s ease}
+.lingora-ring>div {position:absolute;inset:13px;width:auto;height:auto;background:transparent;gap:4px}
+.lingora-ring .goal-ring-flame {color:#F79A23;fill:#FFD168;margin-bottom:1px;flex:none}
+.lingora-ring b {font-size:20px;font-variant-numeric:tabular-nums;letter-spacing:-.4px}
+.lingora-ring small {font-size:10px;color:var(--text);font-weight:650;letter-spacing:-.15px}
+.lingora-ring span {font-size:10px;margin-top:0}
+.lingora-goal-copy {min-width:0}
+.lingora-goal-copy b {font-size:13px;line-height:1.4;letter-spacing:-.2px}
+.lingora-goal-copy p {font-size:12px;line-height:1.65;margin-top:5px;max-width:120px}
+.lingora-days {margin-top:20px;padding:0 2px}
+.lingora-days>div {font-size:10px;gap:7px}
+.lingora-days span {width:21px;height:21px;border-color:var(--line);background:var(--card)}
+.lingora-days .done span {box-shadow:0 2px 5px #1677ff20}
+.lingora-goal-note {margin:15px 0 0;font-size:9px;line-height:1.5}
+.lingora-pill {min-height:28px;padding:5px 9px;border:0;background:var(--bg);font-size:10px;font-weight:550}
+.lingora-progress-rows {gap:6px}
+.lingora-progress-rows>a {min-height:46px;padding:7px 8px;gap:10px;font-size:11px;font-weight:550}
+.lingora-progress-rows>a:nth-child(2) {background:var(--hov);color:var(--link)}
+.lingora-progress-rows b {font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.lingora-stat-icon {width:30px;height:30px}
+.lingora-progress-link {min-height:36px;margin-top:14px;padding-top:13px;font-size:10px}
+.lingora-reward {display:flex;flex-direction:column;gap:10px;min-height:175px;padding:16px;border:1px solid #1677ff0A;border-radius:22px;background:linear-gradient(120deg,color-mix(in srgb,var(--hov) 70%,#6DD4F9),var(--hov));transition:box-shadow .18s,transform .18s}
+.lingora-reward:hover {box-shadow:0 8px 24px #1677ff12;transform:translateY(-2px)}
+.lingora-reward .lingora-reward-content {display:flex;align-items:center;justify-content:center;gap:10px;width:100%;flex:1}
+.lingora-reward-content>img {width:92px;height:102px;object-fit:contain;flex:none;filter:drop-shadow(0 5px 5px #5860b51A)}
+.lingora-reward-content>p {flex:1;min-width:0;margin:0;text-align:left;color:var(--text);font-size:11px;line-height:1.6}
+.lingora-reward-content b {display:block;margin-top:2px;font-size:14px;font-weight:750;line-height:1.35;letter-spacing:-.2px}
+.lingora-reward .lingora-reward-progress {display:flex;align-items:center;gap:10px;width:100%;font-size:11px;font-weight:600;color:var(--text)}
+.lingora-reward-progress progress {height:7px;background:#FFFFFF80}
+.lingora-reward-progress progress::-webkit-progress-bar {background:#FFFFFF80}
+.lingora-reward-progress>span {white-space:nowrap;font-variant-numeric:tabular-nums}
+.lingora-reward-arrow {width:33px;height:33px;background:color-mix(in srgb,var(--card) 55%,transparent);box-shadow:none}
+@media(min-width:1450px) {
+  .lingora-right>.lingora-card {padding:22px 20px}
+  .lingora-ring {width:132px;height:132px}
+  .lingora-goal-copy p {font-size:12px}
+  .lingora-reward {padding:18px;min-height:182px}
+  .lingora-reward-content>img {width:106px;height:108px}
+  .lingora-reward-content>p {font-size:12px}
+}
+@media(min-width:701px) and (max-width:1000px) {
+  .lingora-reward {grid-column:1/-1;flex-direction:row;min-height:134px;gap:25px;padding:14px 20px}
+  .lingora-reward .lingora-reward-content {width:auto;justify-content:flex-start}
+  .lingora-reward .lingora-reward-progress {width:180px}
+  .lingora-reward-content>img {height:92px;width:90px}
+}
+@media(max-width:700px) {
+  .is-home .lingora-right>.lingora-card:first-child .lingora-card-heading {margin-bottom:0}
+  .is-home .lingora-ring>div {inset:10px;gap:2px}
+  .is-home .lingora-ring .goal-ring-flame {display:none}
+  .is-home .lingora-ring small {color:var(--mut)}
+  .is-home .lingora-days {padding:0}
+  .is-home .lingora-days span {background:var(--card)}
+  .is-home .lingora-days .done span {background:var(--pri)}
+}
+.lingora-diamond {color:#109BDF;fill:#65D7FF;filter:drop-shadow(0 2px 2px #0796DF20);stroke-width:1.8}

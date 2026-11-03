@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,9 +16,79 @@
     <link rel="manifest" href="/manifest.json" />
 
     <title>HSK Companion</title>
+    <meta name="description" content="Practise Chinese characters, vocabulary and reading with HSK Study KE. Start in your browser and keep your progress on this device." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="/panda-writing-loop.webp" as="image" />
+    <!-- Inline so the splash paints before the application bundle arrives. -->
+    <style>
+      html, body { margin: 0; background: #FFF0E5; }
+      #app-splash { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; overflow: hidden; background: #fffaf6; color: #34271f; font-family: system-ui, -apple-system, sans-serif; text-align: center; opacity: 1; transition: opacity 300ms ease; }
+      #app-splash.splash-leaving { opacity: 0; pointer-events: none; }
+      .splash-content { padding: 32px 24px; animation: splash-appear 650ms ease both; }
+      .splash-mascot { position: relative; width: min(400px, 87vw); aspect-ratio: 1; margin: 0 auto 12px; }
+      .panda-sprite { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; animation: panda-breathe 3400ms ease-in-out infinite; will-change: transform; }
+      .splash-mascot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+      .splash-wordmark { margin: 0; font-size: clamp(27px, 6vw, 34px); font-weight: 750; letter-spacing: -1.2px; line-height: 1.25; }
+      .splash-wordmark span { color: #e96f1b; }
+      .splash-tagline { margin: 12px 0 32px; font-size: 14px; line-height: 1.6; color: #8b7160; }
+      .splash-loading { display: flex; justify-content: center; align-items: center; gap: 6px; height: 24px; }
+      .splash-loading i { width: 6px; height: 6px; border-radius: 50%; background: #f07820; animation: splash-dot 1200ms ease-in-out infinite; }
+      .splash-loading i:nth-child(2) { animation-delay: 150ms; }
+      .splash-loading i:nth-child(3) { animation-delay: 300ms; }
+      .splash-status { margin: 9px 0 0; font-size: 12px; color: #9a8170; }
+      .splash-retry { display: none; margin-top: 18px; color: #a8490e; font-size: 14px; }
+      #app-splash.splash-slow .splash-retry { display: inline-block; }
+      .splash-footer { position: absolute; bottom: max(26px, env(safe-area-inset-bottom)); left: 24px; right: 24px; color: #ac8c77; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+      @keyframes splash-appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes panda-breathe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-3px) scale(1.008); } }
+      @keyframes splash-dot { 0%, 70%, 100% { opacity: .3; transform: translateY(0); } 35% { opacity: 1; transform: translateY(-4px); } }
+      @media (prefers-reduced-motion: reduce) { #app-splash, #app-splash * { animation: none !important; transition: none !important; } }
+      #app-splash.splash-preview .splash-content { animation: none; }
+      @media (max-height: 500px) { .splash-mascot { width: 220px; margin-bottom: 8px; } .splash-tagline { margin: 8px 0 14px; } .splash-footer { display: none; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="app-splash" role="status" aria-label="Loading HSK Companion">
+      <div class="splash-content">
+        <div class="splash-mascot" aria-hidden="true">
+          <img id="panda-sprite" class="panda-sprite" src="/panda-writing-loop.webp" alt="" />
+          <svg id="panda-writing-scene" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#303738" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+              <path data-writing-stroke d="M738 330Q754 340 762 355"/>
+              <path data-writing-stroke d="M794 330Q810 340 818 355"/>
+              <path data-writing-stroke d="M700 392Q760 384 830 392"/>
+              <path data-writing-stroke d="M750 428Q760 418 772 428"/>
+              <path data-writing-stroke d="M730 464L820 464"/>
+              <path data-writing-stroke d="M775 430L775 558"/>
+              <path data-writing-stroke d="M730 500Q775 486 820 500"/>
+              <path data-writing-stroke d="M730 560L825 560"/>
+            </g>
+            <text id="splash-character-label" x="755" y="635" text-anchor="middle" font-family="system-ui,sans-serif" font-size="30" font-weight="650" fill="#5c493e" opacity="0">学生</text>
+            <text x="755" y="672" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" fill="#8a7465">xuéshēng</text>
+          </svg>
+        </div>
+        <h1 class="splash-wordmark">HSK <span>Companion</span></h1>
+        <p class="splash-tagline">A little practice. A world of possibility.</p>
+        <div class="splash-loading" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="splash-status">Getting your learning space ready…</p>
+        <a class="splash-retry" href="">Taking longer than expected? Tap to reload.</a>
+        <noscript><p>Enable JavaScript to open your learning space.</p></noscript>
+      </div>
+      <div class="splash-footer" aria-hidden="true">Learn · Write · Connect</div>
+    </div>
+    <script>
+      if (new URLSearchParams(location.search).get('splash') === 'preview') {
+        document.getElementById('app-splash').classList.add('splash-preview');
+      }
+      window.__splashRecovery = setTimeout(function () {
+        var splash = document.getElementById('app-splash');
+        if (splash) splash.classList.add('splash-slow');
+      }, 15000);
+    </script>
+    <script src="/splash-animation.js" defer></script>
+    <div id="root" inert></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

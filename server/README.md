@@ -1,13 +1,21 @@
-# Handwriting feedback
+# PWA ecosystem connection
 
-Copy `.env.example` to `.env.local`, enter your OpenAI API key locally, and restart `npm run dev`. Do not paste a secret into chat or use a `VITE_` environment variable. Vite reads the key only on the server. The API is also mounted by `npm run preview`.
+The PWA now uses the Discord bot's existing Gemini/OpenRouter grading engine through a dedicated, limited PWA API. It does not use the admin passkey, does not send PWA drawings to Discord, and does not need a second OpenAI API key.
 
-Select the handwritten strokes of **one character** with the arrow tool, choose **Rate writing**, check the image and target character, then choose **Review with AI**. Only that snapshot and the target character go to OpenAI. Printed examples are excluded. Responses include a practice score, strengths, and next steps. Unclear or blank input has no score. Static images cannot establish stroke order.
+## Server configuration (never VITE_ variables)
 
-Without a key, the UI reports that setup is required; it never substitutes a fake rating. No key is configured in this repository, so a live model review has not been verified.
+On the bot, configure `PWA_SERVICE_TOKEN` with a new random service secret. On the PWA Node server, configure `BOT_SERVICE_TOKEN` with the same value and `BOT_API_URL` with the bot's public HTTPS origin, or its private Docker-network HTTP address. Do not put the secret in frontend code, public files, chat or a `VITE_` variable.
 
-For a production static host, deploy `server/handwriting.mjs` with Node 20+ (`node --env-file=.env.local server/handwriting.mjs`) and route `/api/handwriting-review` through a same-origin reverse proxy to `127.0.0.1:8787`. Add your application's authentication and durable per-user quotas before public deployment. The current endpoint has same-origin checks, a 2 MB input limit, a timeout, and a small per-IP in-memory rate limit for local development.
+For local development these values may go in `.env.local`. This change does not create or modify an environment file. Missing configuration produces a setup message, never a fake grade or translation. Vite mounts the bridge in dev and preview.
 
-Tests: `node --test server/handwriting.test.mjs` (mocked provider responses, no API key or paid requests).
+Build with `npm run build`, then run `npm start` for production. The Node server serves only `dist` and same-origin `/api` routes. Vite's development middleware alone is not a production deployment. Configure Coolify with a Node/Railpack runtime rather than a static-only site if using the API bridge.
 
-References: [Image inputs](https://developers.openai.com/api/docs/guides/images-vision), [Structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+AI requests are user-initiated, capped and processed as background jobs. Workbox caches the app shell, code, fonts and images; API requests, chat responses and AI POSTs are never cached or queued. New releases activate after app tabs close, avoiding forced reloads while drawing. Linked external resources need a connection.
+
+## Data and the deferred sign-in step
+
+Notes, resource links, study conversations, schedules, quiz attempts, profile and review history are real device-local records. No fake people, online indicators or successful Discord dispatches are substituted. Notes and local messages persist across reloads. The legacy demo stores are not imported. Whiteboard storage remains unchanged.
+
+Discord sign-in, authenticated cloud sync, private channel access and shared server study-vault data remain intentionally disconnected until the auth step. No private Discord or admin endpoint was made public. Do not publish the anonymous AI bridge as a finished student service before adding sign-in and durable per-user quotas; service authentication and short in-memory limits are not student authorization.
+
+Tests use mocked bot/provider responses and no paid API calls. Existing uncommitted splash work is preserved.

@@ -15,7 +15,7 @@
       "purpose": "any"
     }
   ],
-  "start_url": "/",
+  "start_url": "/home",
   "scope": "/",
   "background_color": "#FFF0E5",
   "theme_color": "#FFF0E5",

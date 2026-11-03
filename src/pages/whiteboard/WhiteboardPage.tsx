@@ -1,3 +1,5 @@
+import { requestBotJob } from '../../data/botService';
+import { updateLearning, newId } from '../../data/learningStore';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Excalidraw, convertToExcalidrawElements, serializeAsJSON, exportToBlob } from '@excalidraw/excalidraw';
@@ -85,12 +87,14 @@ export default function WhiteboardPage() {
   const rateWriting = async () => {
     setReviewBusy(true); setReviewError(''); setReview(null);
     const controller = new AbortController(); reviewAbort.current = controller;
-    const timeout = setTimeout(() => controller.abort(), 65000);
+    const timeout = setTimeout(() => controller.abort(), 190000);
     try {
-      const response = await fetch('/api/handwriting-review', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ character: reviewCharacter, image: reviewImage }), signal: controller.signal });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'Review unavailable. Please try again.');
+      const result = await requestBotJob('/api/handwriting-review', { character: reviewCharacter, image: reviewImage }, controller.signal);
+      if (!result || !(result.score === null || Number.isInteger(result.score) && result.score >= 0 && result.score <= 100)
+          || typeof result.summary !== 'string' || !['strengths', 'improvements'].every(key => Array.isArray(result[key]) && result[key].every((tip: unknown) => typeof tip === 'string'))) throw new Error('The tutor returned an unreadable review. Please retry.');
       setReview(result);
+      try { updateLearning(s => ({ ...s, reviews: [...s.reviews, { id: newId(), character: reviewCharacter, score: result.score, summary: result.summary, createdAt: Date.now() }] })); }
+      catch { setReviewError('Review received, but device storage could not save it. Download your board before leaving.'); }
     } catch (error) { setReviewError(error instanceof Error && error.name !== 'AbortError' ? error.message : 'The review took too long. Please try again.'); }
     finally { clearTimeout(timeout); setReviewBusy(false); }
   };
@@ -139,7 +143,7 @@ export default function WhiteboardPage() {
         <p className="board-eyebrow">YOUR WRITING COACH</p><h2 id="review-title">A little better, every stroke.</h2>
         <img className="board-review-image" src={reviewImage} alt="Selected handwriting to review" />
         <label className="board-review-target">Target character <input aria-label="Review target character" value={reviewCharacter} disabled={reviewBusy} onChange={e => { setReviewCharacter(Array.from(e.target.value).slice(0, 1).join('')); setReview(null); }} /> <span>{reviewCharacter && pronunciation(reviewCharacter)}</span></label>
-        <p>Review sends only this selected handwriting and its target character to OpenAI. Feedback covers visual shape and proportions, not stroke order.</p>
+        <p>Review sends only this selected handwriting and its target character through the bot’s shared AI tutor. Feedback covers visual shape and proportions, not stroke order.</p>
         <button className="board-primary" onClick={rateWriting} disabled={reviewBusy || !/^\p{Script=Han}$/u.test(reviewCharacter)}>{reviewBusy ? 'Reviewing your writing…' : 'Review with AI'}</button>
         {reviewError && <p role="alert">{reviewError}</p>}
         {review && <section className="board-review-result" aria-live="polite"><h3>{review.score === null ? 'Try a clearer attempt' : `${review.score}/100 · Practice feedback`}</h3><p>{review.summary}</p>{review.strengths.length > 0 && <><h4>What’s working</h4><ul>{review.strengths.map((tip, i) => <li key={i}>{tip}</li>)}</ul></>}<h4>Try next</h4><ul>{review.improvements.map((tip, i) => <li key={i}>{tip}</li>)}</ul><p>AI feedback is an estimate for practice.</p></section>}

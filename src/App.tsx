@@ -13,6 +13,8 @@ import { TranslatePage } from './pages/translate/TranslatePage';
 import { ClassroomPage } from './pages/classroom/ClassroomPage';
 import { NotesPage } from './pages/notes/NotesPage';
 import { QuizPage } from './pages/quiz/QuizPage';
+import { ReadingPage } from './pages/reading/ReadingPage';
+import { LandingPage } from './pages/landing/LandingPage';
 import { lazy, Suspense } from 'react';
 const WhiteboardPage = lazy(() => import('./pages/whiteboard/WhiteboardPage'));
 
@@ -21,8 +23,9 @@ export const App: React.FC = () => {
     <Router>
       <AppLayout>
         <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/reading" element={<ReadingPage />} />
           <Route path="/schedule-detail" element={<ScheduleDetailPage />} />
           <Route path="/ai-insight" element={<AiInsightDetailPage />} />
           <Route path="/translate" element={<TranslatePage />} />
