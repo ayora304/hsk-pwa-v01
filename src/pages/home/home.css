@@ -184,3 +184,11 @@
   .is-home .lingora-days .done span {background:var(--pri)}
 }
 .lingora-diamond {color:#109BDF;fill:#65D7FF;filter:drop-shadow(0 2px 2px #0796DF20);stroke-width:1.8}
+
+/* A quiet blue wash behind the upper-right progress cards. */
+@media (min-width:701px) {
+  .lingora-app.is-home {
+    background:radial-gradient(ellipse 52rem 42rem at top right,
+      color-mix(in srgb,var(--pri) 9%,var(--bg)) 0%,var(--bg) 84%);
+  }
+}

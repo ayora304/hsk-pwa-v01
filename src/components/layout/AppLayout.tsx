@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, ChartNoAxesColumnIncreasing, Check, Home, Menu, M
 import { useLearning, useStorageError } from '../../data/learningStore';
 import { currentTheme, setTheme } from '../../data/theme';
 import './appLayout.css';
+import '../../styles/typography.css';
 
 const navigation = [
   { to: '/home', name: 'Home', icon: Home },

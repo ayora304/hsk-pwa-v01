@@ -1,0 +1,166 @@
+/* Shared type roles for the learning app. Keep the public landing and whiteboard independent. */
+.lingora-app {
+  --type-page: 2.25rem;
+  --type-section: 1.25rem;
+  --type-title: 1.0625rem;
+  --type-body: 1rem;
+  --type-small: .875rem;
+  --type-caption: .75rem;
+  --font-chinese: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  font-size: var(--type-body);
+  line-height: 1.55;
+}
+
+/* Shell and the shared inner-page controls. */
+.lingora-app .lingora-nav a {font-size:var(--type-body);line-height:1.4}
+.lingora-app .lingora-nav a svg {flex:none}
+@media (max-width:1100px) {.lingora-app .lingora-nav a {font-size:.9375rem}}
+.lingora-app .lingora-brand small {font-size:var(--type-caption);line-height:1.4;white-space:normal}
+.lingora-app .lingora-side-promo>b {font-size:var(--type-small);line-height:1.4;align-items:flex-start}
+.lingora-app .lingora-side-promo>b svg {flex:none}
+.lingora-app .lingora-side-promo p {font-size:var(--type-small);line-height:1.55}
+.lingora-app .lingora-button {font-size:var(--type-body);font-weight:600;line-height:1.4;min-height:46px;white-space:normal;text-align:center;padding:10px 20px}
+.lingora-app .lingora-side-promo .lingora-button {font-size:var(--type-small);padding:10px}
+.lingora-app .lingora-theme {font-size:var(--type-small)}
+.lingora-app .lingora-profile b {font-size:var(--type-small);font-weight:600}
+.lingora-app .lingora-profile small,.lingora-app .lingora-device {font-size:var(--type-caption);line-height:1.45}
+.lingora-app .lingora-profile small {margin-top:2px}
+.lingora-app .student-page h1 {font-size:var(--type-page);line-height:1.2;font-weight:700;letter-spacing:-.7px}
+.lingora-app .student-page h2 {font-size:var(--type-section);line-height:1.35;font-weight:600}
+.lingora-app .student-muted,.lingora-app .student-input,.lingora-app .student-button {font-size:var(--type-body);line-height:1.55}
+.lingora-app .student-eyebrow,.lingora-app .student-foot {font-size:var(--type-small)}
+.lingora-app .lingora-bottom-nav a {font-size:var(--type-caption);line-height:1.3}
+.lingora-app .lingora-mobile-tools a {font-size:var(--type-body)}
+
+/* Dashboard: make the useful content compete comfortably with the hero. */
+.lingora-app .lingora-hero h1 {font-size:clamp(1.75rem,2.6vw,2.25rem);line-height:1.2;font-weight:700;letter-spacing:-.8px}
+.lingora-app .lingora-hero p {font-size:var(--type-body);line-height:1.55}
+.lingora-app .lingora-language {font-size:var(--type-small);font-weight:600}
+.lingora-app .lingora-search input {font-size:var(--type-body)}
+.lingora-app .lingora-search-caption {font-size:var(--type-caption);letter-spacing:.6px}
+.lingora-app .lingora-search-results b {font-size:var(--type-body);font-weight:600}
+.lingora-app .lingora-search-results small,.lingora-app .lingora-search-results p {font-size:var(--type-small);line-height:1.5}
+.lingora-app .lingora-section-heading h2 {font-size:var(--type-section);font-weight:600;line-height:1.35;letter-spacing:-.25px}
+.lingora-app .lingora-section-heading>a {font-size:var(--type-small);line-height:1.4;min-height:36px;flex:none}
+.lingora-app .lingora-lesson h3 {font-size:var(--type-title);font-weight:600;line-height:1.35}
+.lingora-app .lingora-lesson p {font-size:var(--type-small);line-height:1.5}
+.lingora-app .lingora-lesson .lesson-start {font-size:var(--type-body);flex:none}
+.lingora-app .lingora-progress-line b {font-size:var(--type-caption);flex:none}
+.lingora-app .lingora-skill {min-height:100px;gap:10px}
+.lingora-app .lingora-skill>span:nth-child(2) {min-width:0}
+.lingora-app .lingora-skill b {font-size:var(--type-title);font-weight:600;line-height:1.35;letter-spacing:0}
+.lingora-app .lingora-skill small {font-size:var(--type-small);line-height:1.45}
+.lingora-app .lingora-resources>a {min-height:84px;gap:10px}
+.lingora-app .lingora-resources>a>span:nth-child(2) {min-width:0;flex:1}
+.lingora-app .lingora-resources b {font-size:var(--type-body);font-weight:600;line-height:1.35}
+.lingora-app .lingora-resources small {font-size:var(--type-small);line-height:1.45}
+.lingora-app .lingora-right .lingora-card-heading h2 {font-size:1.125rem;line-height:1.35;font-weight:600}
+.lingora-app .lingora-card-heading>button {font-size:var(--type-small);min-height:40px;flex:none}
+.lingora-app .lingora-goal-copy b {font-size:var(--type-body);font-weight:600;line-height:1.4}
+.lingora-app .lingora-goal-copy p {font-size:var(--type-small);line-height:1.55;max-width:none}
+.lingora-app .lingora-days>div {font-size:var(--type-caption);line-height:1.4}
+.lingora-app .lingora-ring b {font-size:1.5rem;font-weight:700;letter-spacing:-.4px}
+.lingora-app .lingora-ring small,.lingora-app .lingora-ring span {font-size:var(--type-caption);font-weight:500}
+.lingora-app .lingora-goal-note {font-size:var(--type-caption);line-height:1.5}
+.lingora-app .lingora-pill {font-size:var(--type-caption);line-height:1.4;flex:none}
+.lingora-app .lingora-progress-rows>a {font-size:var(--type-small);font-weight:500;line-height:1.45;min-height:52px}
+.lingora-app .lingora-progress-rows b {font-size:var(--type-body);font-weight:600}
+.lingora-app .lingora-progress-link {font-size:var(--type-small);line-height:1.45}
+.lingora-app .lingora-reward-content>p {font-size:var(--type-small);line-height:1.55}
+.lingora-app .lingora-reward-content b {font-size:var(--type-title);font-weight:700;line-height:1.35}
+.lingora-app .lingora-reward-progress,.lingora-app .lingora-footer {font-size:var(--type-caption);line-height:1.5}
+.lingora-app .lingora-dialog p,.lingora-app .lingora-dialog label,.lingora-app .lingora-dialog select {font-size:var(--type-body);line-height:1.5}
+
+/* Reading: a product page title, substantial story names, and legible secondary controls. */
+.lingora-app .reading-hero {margin-bottom:32px;align-items:center}
+.lingora-app .reading-hero h1 {font-size:var(--type-page);line-height:1.2;font-weight:700;letter-spacing:-.8px;margin-bottom:18px}
+.lingora-app .reading-intro {font-size:var(--type-body);line-height:1.65}
+.lingora-app .reading-eyebrow {font-size:var(--type-caption);font-weight:600;letter-spacing:1.2px;line-height:1.5}
+.lingora-app .reading-shelf {width:160px;height:160px;padding:22px}
+.lingora-app .reading-shelf small {font-size:var(--type-caption);line-height:1.4}
+.lingora-app .reading-shelf small:first-of-type {font-weight:600;letter-spacing:.5px}
+.lingora-app .reading-shelf strong {font-size:2.25rem;font-weight:700}
+.lingora-app .reading-filters {flex-wrap:wrap;gap:6px}
+.lingora-app .reading-filters button {font-size:var(--type-body);font-weight:600;line-height:1.4;flex:1 0 72px;padding:10px 12px;min-height:46px}
+.lingora-app .reading-library-heading p {font-size:var(--type-section);font-weight:600;line-height:1.4}
+.lingora-app .reading-library-heading small {font-size:var(--type-small);line-height:1.5}
+.lingora-app .reading-badge {font-size:var(--type-caption);font-weight:600;line-height:1.4}
+.lingora-app .reading-category {font-size:var(--type-caption);font-weight:600;line-height:1.5;letter-spacing:.35px}
+.lingora-app .reading-story h2 {font-family:var(--font-chinese);font-size:1.5rem;font-weight:600;line-height:1.5;letter-spacing:0}
+.lingora-app .reading-english {font-size:var(--type-body);line-height:1.5;margin-bottom:24px}
+.lingora-app .reading-card-footer {font-size:var(--type-small);font-weight:600;line-height:1.5}
+.lingora-app .reading-footnote,.lingora-app .reading-back {font-size:var(--type-small);line-height:1.6}
+.lingora-app .reading-reader-heading {margin:28px 0 24px}
+.lingora-app .reading-reader-heading h1 {font-family:var(--font-chinese);font-size:var(--type-page);font-weight:600;line-height:1.35;letter-spacing:0}
+.lingora-app .reading-reader-heading>p:last-child {font-size:var(--type-body);line-height:1.6;margin-top:10px}
+.lingora-app .reading-tools button,.lingora-app .reading-primary {font-size:var(--type-body);font-weight:500;line-height:1.4;min-height:46px}
+.lingora-app .reading-hint {font-size:var(--type-small);line-height:1.6}
+.lingora-app .reading-chinese {font-family:var(--font-chinese);font-size:1.625rem;font-weight:400;line-height:1.9;letter-spacing:.02em}
+.lingora-app .reading-pinyin {font-size:var(--type-body);line-height:1.7}
+.lingora-app .reading-line-actions button,.lingora-app .reading-passage summary {font-size:var(--type-small);line-height:1.5;min-height:40px}
+.lingora-app .reading-passage details p {font-size:var(--type-body);line-height:1.7}
+.lingora-app .reading-finish h2 {font-size:var(--type-section);font-weight:600;line-height:1.4}
+.lingora-app .reading-finish p {font-size:var(--type-small);line-height:1.6}
+
+/* Quiz: component font sizes now win over the shared control reset. */
+.lingora-app .quiz-prompt h1 {font-size:1.75rem;font-weight:700;line-height:1.3;letter-spacing:-.5px}
+.lingora-app .quiz-prompt p {font-size:var(--type-body);line-height:1.6}
+.lingora-app .quiz-speech strong {font-family:var(--font-chinese);font-size:1.625rem;font-weight:600;line-height:1.5}
+.lingora-app .quiz-speech span {font-size:var(--type-small);line-height:1.5}
+.lingora-app .quiz-option {font-size:var(--type-body);font-weight:500;line-height:1.5}
+.lingora-app .quiz-feedback>.lingora-button {font-size:var(--type-body);font-weight:600}
+.lingora-app .quiz-feedback-message b {font-size:var(--type-section);font-weight:600}
+.lingora-app .quiz-feedback-message p,.lingora-app .quiz-audio-note,.lingora-app .quiz-complete p {font-size:var(--type-small);line-height:1.55}
+.lingora-app .quiz-complete h1 {font-size:var(--type-page);font-weight:700;line-height:1.25}
+.lingora-app .quiz-complete .quiz-score {font-size:3.25rem;font-weight:700}
+.lingora-app .quiz-again {font-size:var(--type-body);font-weight:500}
+
+@media (min-width:1001px) and (max-width:1250px) {
+  .lingora-app .lingora-columns {grid-template-columns:minmax(0,1fr) 280px}
+  .lingora-app .lingora-lesson {flex-wrap:wrap}
+  .lingora-app .lingora-lesson .lesson-start {margin-left:auto}
+}
+@media (max-width:1000px) and (min-width:701px) {
+  .lingora-app .lingora-reward {flex-wrap:wrap}
+  .lingora-app .lingora-reward .lingora-reward-progress {width:100%}
+}
+@media (max-width:700px) {
+  .lingora-app {--type-page:1.875rem;--type-title:1rem}
+  .lingora-app .lingora-main {padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+  .lingora-app.is-home .lingora-main {padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+  .lingora-app.is-home .lingora-hero {min-height:350px}
+  .lingora-app.is-home .lingora-hero h1,.lingora-app.is-home .lingora-hero h1 span {font-size:var(--type-page);line-height:1.3}
+  .lingora-app.is-home .lingora-hero-copy {padding-top:80px}
+  .lingora-app.is-home .lingora-mobile-greeting {font-size:var(--type-small);line-height:1.6;max-width:78%}
+  .lingora-app.is-home .lingora-right>.lingora-card:first-child {grid-template-columns:100px minmax(0,1fr);column-gap:16px;row-gap:14px;padding:20px 18px;min-height:206px}
+  .lingora-app.is-home .lingora-card-heading h2 {font-size:1.125rem}
+  .lingora-app.is-home .lingora-ring {width:100px;height:100px;grid-row:2}
+  .lingora-app.is-home .lingora-ring b {font-size:1.75rem;line-height:1.15}
+  .lingora-app.is-home .lingora-ring b small {font-size:var(--type-caption)}
+  .lingora-app.is-home .lingora-goal-copy {align-self:center}
+  .lingora-app.is-home .lingora-goal-copy b {font-size:var(--type-body)}
+  .lingora-app.is-home .lingora-goal-copy p {font-size:var(--type-small);line-height:1.55}
+  .lingora-app.is-home .lingora-days {grid-column:1/-1;grid-row:3;gap:7px;justify-content:space-between}
+  .lingora-app.is-home .lingora-days>div {font-size:var(--type-caption);line-height:1.4}
+  .lingora-app.is-home .lingora-days span {width:22px;height:22px}
+  .lingora-app.is-home .lingora-section-heading h2,.lingora-app.is-home .lingora-mobile-path h2 {font-size:var(--type-section);line-height:1.35;font-weight:600}
+  .lingora-app.is-home .lingora-continue-section {margin-top:22px}
+  .lingora-app.is-home .lingora-lesson {min-height:90px}
+  .lingora-app.is-home .lingora-lesson h3 {font-size:var(--type-title);line-height:1.4}
+  .lingora-app.is-home .lingora-lesson p {font-size:var(--type-small);line-height:1.45}
+  .lingora-app.is-home .lingora-lesson .lesson-start {font-size:0;min-height:44px;padding:0}
+  .lingora-app.is-home .lesson-mobile-icon {top:calc(50% - 20px)}
+  .lingora-app .lingora-mobile-path b {font-size:var(--type-caption);font-weight:500;line-height:1.4;text-align:center;overflow-wrap:anywhere}
+  .lingora-app .lingora-mobile-path>div {gap:8px}
+  .lingora-app .reading-page {padding:24px 16px}
+  .lingora-app .reading-hero h1 {font-size:var(--type-page);letter-spacing:-.6px}
+  .lingora-app .reading-shelf {width:auto;height:auto;padding:16px;gap:10px;flex-wrap:wrap}
+  .lingora-app .reading-library-heading {gap:8px}
+  .lingora-app .reading-story {padding:22px}
+  .lingora-app .reading-reader-heading h1 {font-size:var(--type-page)}
+  .lingora-app .reading-passage {padding:4px 14px;margin-left:-4px;margin-right:-4px}
+  .lingora-app .reading-chinese {font-size:1.5rem;line-height:1.9}
+  .lingora-app .reading-tools button {padding:12px}
+  .lingora-app .quiz-prompt h1 {font-size:1.5rem}
+  .lingora-app.is-quiz .lingora-main {padding:0}
+}

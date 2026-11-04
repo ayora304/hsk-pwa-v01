@@ -577,7 +577,7 @@
   }
 }
 .lingora-app *, .lingora-app *::before, .lingora-app *::after {box-sizing:border-box}
-.lingora-app button,.lingora-app input,.lingora-app select {font:inherit}
+.lingora-app :where(button,input,select) {font-family:inherit}
 .lingora-app button,.lingora-app a { -webkit-tap-highlight-color:transparent }
 .lingora-app a {text-decoration:none}
 .lingora-app button {cursor:pointer}
@@ -599,7 +599,7 @@
 .lingora-button {display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--pri);color:var(--onpri);min-height:44px;padding:0 21px;border:0;border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap;transition:background .18s,transform .18s,box-shadow .18s}
 .lingora-button:hover {background:var(--priH);transform:translateY(-1px);box-shadow:0 6px 16px #1677ff22}
 .lingora-side-promo .lingora-button {width:100%;font-size:12px;padding:0 10px}
-.lingora-theme {display:flex;align-items:center;gap:9px;min-height:44px;border:0;background:transparent;color:var(--mut);padding:0 12px;font-size:12px!important;border-radius:10px}
+.lingora-theme {display:flex;align-items:center;gap:9px;min-height:44px;border:0;background:transparent;color:var(--mut);padding:0 12px;font-size:12px;border-radius:10px}
 .lingora-theme:hover {background:var(--hov)}
 .lingora-profile {display:flex;align-items:center;gap:9px;min-height:64px;border:1px solid var(--line);border-radius:16px;padding:10px;background:var(--card);color:var(--text)}
 .lingora-avatar {width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;background:#FFE2CD;color:#87421D;font-size:15px;font-weight:650}
