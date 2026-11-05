@@ -1,0 +1,17 @@
+.study-global-header {display:flex;align-items:center;gap:28px;margin-bottom:28px;position:relative;z-index:5;color:var(--text)}
+.study-global-search-wrap {position:relative;flex:1;min-width:0}
+.study-global-search {display:flex;align-items:center;gap:12px;min-height:46px;padding:0 18px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--mut)}
+.study-global-search input {width:100%;min-width:0;background:transparent;color:var(--text);font:inherit;font-size:16px;padding:11px 0;border:0;outline:none}
+.study-global-search:focus-within {outline:2px solid var(--pri);outline-offset:2px}
+.study-global-search input::placeholder {color:var(--mut)}
+.study-global-stats {display:flex;align-items:center;gap:20px;flex:none}
+.study-global-stats a {display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;min-width:44px;color:var(--text);font-size:15px;text-decoration:none}
+.study-global-flame {color:#f88a1c;fill:#ffdd7a}.study-global-gem {color:#109bdf;fill:#65d7ff}
+.study-global-results {position:absolute;top:calc(100% + 10px);left:0;right:0;padding:10px;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:0 12px 32px #173c6b20;max-height:420px;overflow:auto}
+.study-global-results>div {display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 10px;color:var(--mut);font-size:11px;letter-spacing:.5px}
+.study-global-results button {border:0;background:none;color:var(--mut);min-width:44px;min-height:44px;display:grid;place-items:center}
+.study-global-results a {display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-radius:10px;color:var(--text);text-decoration:none}
+.study-global-results a:hover {background:var(--hov)}
+.study-global-results b {display:block;font-size:14px}.study-global-results small {display:block;font-size:12px;color:var(--mut);margin-top:3px}.study-global-results p {padding:12px;font-size:14px;color:var(--mut)}
+.study-global-header a:focus-visible,.study-global-header button:focus-visible {outline:3px solid var(--pri);outline-offset:3px}
+@media(max-width:700px) {.study-global-header {gap:10px;flex-wrap:wrap;margin-bottom:22px}.study-global-stats {margin-left:auto;gap:12px}.study-global-search-wrap {order:2;flex-basis:100%}.study-global-search {padding:0 14px}.study-global-search input {font-size:15px}}

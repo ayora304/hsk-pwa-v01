@@ -37,3 +37,37 @@
 .board-dialog form label { font-size: 14px; font-weight: 650; }
 .board-dialog form input { border: 1px solid #d6c8bd; padding: 12px; border-radius: 10px; width: 100%; font-size: 13px; }
 @media (max-width: 600px) { .board-header { gap: 7px; padding-left: 10px; padding-right: 10px; } .board-heading h1 { font-size: 16px; } .board-header button { padding: 9px; font-size: 12px; } .board-practice { gap: 8px; padding: 8px 10px; } .board-tip { display: none; } .board-dialog { padding: 24px; } }
+
+.study-board-layout{display:grid;grid-template-columns:68px minmax(0,1fr);height:100dvh;background:#faf9f7;color:#242a33;overflow:hidden}
+.study-board-layout .study-board{min-width:0;background:#faf9f7;color:#242a33;position:relative}
+.board-navigation{border-right:1px solid #e6e1db;background:#fff;display:flex;align-items:center;flex-direction:column;gap:6px;padding:12px 5px;overflow:auto}
+.board-navigation>a{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:10px;color:#62616a;text-decoration:none}
+.board-navigation>a:hover{background:#f4f1ed}.board-navigation>a[aria-current]{background:#fff1e6;color:#b84308}.board-navigation>a:focus-visible{outline:2px solid #f97316;outline-offset:2px}
+.board-navigation .board-rail-brand{margin-bottom:10px}.board-rail-brand img{width:34px;height:34px;object-fit:contain}
+.study-board .board-header{height:auto;min-height:62px;padding:8px 14px;gap:8px;background:#fff;border-color:#e6e1db}
+.board-header>button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 10px;border-radius:8px}
+.board-heading>input{width:100%;font:inherit;font-size:17px;font-weight:700;border:1px solid transparent;background:transparent;color:#242a33;border-radius:5px;padding:3px 5px;min-width:0}
+.board-heading>input:hover{border-color:#e6e1db}.board-heading p{padding-left:6px;font-size:11px}
+.board-workspace{display:flex;flex:1;min-height:0;position:relative}.board-canvas{min-width:0}
+.board-paper-tools{display:flex;align-items:center;gap:8px;padding:7px 14px;background:#faf9f7;border-bottom:1px solid #e6e1db;overflow-x:auto;flex:none}
+.board-paper-tools label{display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:12px;color:#67616a}
+.board-paper-tools select,.board-practice select,.board-export-fields select,.board-export-fields input:not([type=checkbox]){font:inherit;background:#fff;color:#242a33;min-height:37px;border:1px solid #e6e1db;border-radius:7px;padding:5px 8px}
+.board-paper-tools button,.board-exercises{white-space:nowrap;min-height:37px;border-radius:7px;padding:7px 10px}
+.board-exercises{margin-left:auto;display:flex;align-items:center;color:#a84413;font-size:13px;font-weight:650;text-decoration:none}
+.study-board button:focus-visible,.study-board a:focus-visible,.study-board input:focus-visible,.study-board select:focus-visible{outline-color:#f97316}
+.study-board .board-toolbar-grip{background:#fff4eb;color:#a84413;border-color:#efd8c7}
+.study-board .board-primary{background:#b94a0d;border-color:#b94a0d;color:#fff}
+.board-command-menu{position:absolute;z-index:20;top:60px;left:48px;width:235px;max-height:calc(100dvh - 75px);overflow:auto;padding:12px;border:1px solid #e6e1db;border-radius:11px;background:#fff;box-shadow:0 10px 24px #242a3319;display:flex;flex-direction:column;gap:3px}
+.board-command-menu strong{font-size:11px;text-transform:uppercase;letter-spacing:.07em;padding:8px 7px 3px;color:#78716c}
+.board-command-menu button,.board-command-menu a{display:block;text-align:left;border:0;border-radius:6px;padding:9px 8px;min-height:36px;color:#242a33;font-size:13px;text-decoration:none}
+.board-command-menu button:hover,.board-command-menu a:hover{background:#fff1e6}
+.board-pages{width:185px;flex:none;background:#fff;border-left:1px solid #e6e1db;overflow:auto;padding:10px}
+.board-pages>div:first-child{display:flex;align-items:center;justify-content:space-between}.board-pages ol{list-style:none;padding:0;margin:10px 0;display:grid;gap:7px}
+.board-pages li button{width:100%;text-align:left;padding:8px 10px;border-radius:8px}.board-pages button[aria-current]{border-color:#eea575;background:#fff3e8}.board-pages small{display:block;color:#78716c;font-size:11px;font-weight:400;margin-top:2px}
+.board-page-actions,.board-dialog-actions{display:flex;gap:8px;flex-wrap:wrap}.board-page-actions button{padding:7px 8px;border-radius:7px;font-size:11px}
+.board-dialog::backdrop{background:#242a3355}.board-dialog-actions button{min-height:40px}.board-export-dialog{max-width:680px}.board-export-dialog h3{margin:20px 0 6px;font-size:18px}
+.board-export-fields{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;margin:14px 0}.board-export-fields label{display:flex;flex-direction:column;gap:5px;font-size:12px}.board-export-fields label:last-child{flex-direction:row;align-items:center;min-height:37px}.board-export-fields input:not([type=checkbox]){width:128px}
+.board-print-preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:12px;margin-top:15px}.board-print-preview img{width:100%;max-height:260px;object-fit:contain;background:#fff;border:1px solid #e6e1db}.board-print-frame{position:fixed;bottom:0;right:0;width:0;height:0;border:0}
+@media(max-width:700px){.study-board-layout{grid-template-columns:48px minmax(0,1fr)}.board-navigation{padding:8px 2px;gap:4px}.board-navigation>a{width:42px;height:42px}.board-navigation>a svg{width:19px}.study-board .board-header{padding:5px 7px;gap:4px;min-height:55px}.board-header>button{min-width:36px;min-height:40px;padding:5px}.board-header>button>span{display:none}.board-heading>input{font-size:14px;padding:3px}.board-heading p{font-size:9px;padding-left:3px}.board-paper-tools{padding:5px 7px;gap:5px}.board-paper-tools label>span{display:none}.board-paper-tools button{padding:7px 8px}.board-command-menu{top:53px;left:6px}.board-pages{position:absolute;right:0;top:0;bottom:0;z-index:12;width:150px;box-shadow:-5px 0 14px #242a3318}.board-practice{font-size:12px}.board-dialog{width:calc(100% - 24px);padding:20px}}
+.board-canvas .excalidraw{--color-primary:#b94a0d;--color-primary-darker:#983903;--color-surface-primary-container:#fff1e6;--color-on-primary-container:#9d400b}
+.board-paper-tools button[aria-pressed=true]{background:#fff1e6;color:#a84413;border-color:#eea575}.board-lasso-active canvas{cursor:crosshair!important}.board-lasso-path{position:absolute;inset:0;width:100%;height:100%;z-index:9;pointer-events:none}.board-lasso-path polygon{fill:#f973161c;stroke:#c15413;stroke-width:1.5;stroke-dasharray:5 3}

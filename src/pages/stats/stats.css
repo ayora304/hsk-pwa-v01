@@ -1,0 +1,30 @@
+.progress-page .progress-metrics {grid-template-columns:repeat(3,minmax(0,1fr))}
+.progress-metrics .study-card {display:flex;flex-direction:column;gap:8px}
+.progress-metrics p {margin:0}
+.progress-metric-value {font-size:30px;letter-spacing:-1px}
+.progress-definitions {font-size:13px;line-height:1.65}
+.progress-section-heading {display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.progress-chart {height:170px;display:flex;align-items:flex-end;gap:3px;padding-top:10px;border-bottom:1px solid var(--line);margin-top:24px}
+.progress-chart-column {height:100%;flex:1;min-width:0;display:flex;align-items:flex-end;background:var(--soft);border-radius:5px 5px 0 0}
+.progress-chart-column>span {width:100%;background:var(--pri);border-radius:5px 5px 0 0}
+.progress-chart-labels {display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-top:8px}
+.progress-data {margin-top:20px}
+.progress-data summary {cursor:pointer;min-height:44px;line-height:1.5;padding:10px 0;color:var(--link)}
+.progress-table-wrap {max-height:320px;overflow:auto}
+.progress-data table {width:100%;border-collapse:collapse;font-size:13px;text-align:left}
+.progress-data th,.progress-data td {padding:10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.progress-data caption {text-align:left;padding:12px 0;font-weight:600}
+.progress-skill-list,.progress-next-list,.progress-review-list {padding:0;list-style:none;display:flex;flex-direction:column;gap:20px}
+.progress-skill-list li>div {display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:8px}
+.progress-skill-list li span {color:var(--mut)}
+.progress-next-list li,.progress-review-list li {border-top:1px solid var(--line);padding-top:16px}
+.progress-page .progress-levels {margin-top:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.progress-levels article {border:1px solid var(--line);border-radius:16px;padding:16px}
+.progress-levels article h3 {margin-top:0}
+.progress-levels article p {font-size:13px;color:var(--mut)}
+.progress-levels .study-button {margin-top:12px}
+.progress-achievements {list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:16px}
+.progress-achievements li {display:flex;align-items:center;gap:10px;padding:12px;background:var(--hov);border-radius:12px;color:var(--link)}
+.progress-achievements small {display:block;color:var(--mut);margin-top:5px}
+@media(max-width:900px) {.progress-page .progress-metrics,.progress-page .progress-levels {grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px) {.progress-section-heading {flex-direction:column}.progress-page .progress-levels {grid-template-columns:1fr}.progress-metric-value {font-size:25px}.progress-skill-list li>div {flex-direction:column;gap:4px}}

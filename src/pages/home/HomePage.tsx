@@ -56,7 +56,10 @@ export const HomePage = () => {
 
     <div className="lingora-columns"><main className="lingora-content">
       <section className="lingora-hero">
-        <img className="lingora-hero-art" src="/lingora/hero-illustration.png" alt="A friendly blue penguin on an illustrated island" />
+        <picture>
+          <source media="(min-width:701px)" srcSet="/lingora/hero-panda-wide.png" />
+          <img className="lingora-hero-art lingora-hero-panda" src="/lingora/hero-panda.png" alt="A cheerful panda explorer beside a Chinese pavilion and river" />
+        </picture>
         <Link className="lingora-language" to="/classroom"><span>汉</span> Learning Chinese <ChevronDown size={14}/></Link>
         <div className="lingora-hero-copy"><h1>{now.getHours() < 12 ? 'Good morning' : now.getHours() < 18 ? 'Good afternoon' : 'Good evening'},<br/><span>{name}!</span></h1><p className="lingora-desktop-greeting">One lesson closer to<br/>your next adventure!</p><p className="lingora-mobile-greeting">Let's learn something new today!</p><Link className="lingora-button" to={latest ? '/quiz' : '/classroom'}>Continue Learning <ArrowRight size={17}/></Link></div>
       </section>
@@ -66,7 +69,7 @@ export const HomePage = () => {
         { title: 'Vocabulary', to: '/quiz', icon: GraduationCap },
         { title: 'Library', to: '/classroom', icon: Library },
       ].map(({ title, to, icon: Icon }) => <Link key={title} to={to}><span><Icon size={25}/></span><b>{title}</b></Link>)}</div></section>
-      <section className="lingora-section lingora-continue-section"><div className="lingora-section-heading"><h2>Continue Learning</h2><Link to="/classroom">See All <ChevronRight size={14}/></Link></div>
+      <section className="lingora-section lingora-continue-section"><div className="lingora-section-heading"><h2>Recent Activity</h2><Link to="/classroom">See All <ChevronRight size={14}/></Link></div>
         <div className="lingora-lesson"><span className="lesson-mobile-icon"><BookOpen size={24}/></span><img src="/lingora/lesson-picture.png" alt="Illustrated city and travel landmarks"/><div className="lingora-lesson-info"><h3>{latest ? 'Vocabulary Review' : 'Everyday Chinese'}</h3><p>{latest ? `${latest.correct} of ${latest.total} correct in your last quiz` : 'HSK 1 · Build your foundations'}</p><div className="lingora-progress-line"><progress max="100" value={stats.accuracy ?? 0} aria-label="Overall quiz accuracy"/><b>{stats.accuracy === null ? 'New' : `${stats.accuracy}%`}</b></div></div><Link className="lingora-button lesson-start" to="/quiz"><Play className="lesson-play" size={15} fill="currentColor"/><ChevronRight className="lesson-chevron" size={19}/> {latest ? 'Review' : 'Start'}</Link></div>
       </section>
       <section className="lingora-section lingora-skills-section"><div className="lingora-section-heading"><h2>Build Your Skills</h2></div><div className="lingora-skills">{tools.map(({ title, detail, to, icon: Icon, color }) => <Link key={title} className={`lingora-skill ${color}`} to={to}><span className="lingora-skill-icon"><Icon size={23}/></span><span><b>{title}</b><small>{detail}</small></span><ArrowRight size={13} className="skill-arrow"/></Link>)}</div></section>

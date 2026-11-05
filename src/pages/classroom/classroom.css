@@ -1,0 +1,115 @@
+.lingora-main:has(>.learning-dashboard) {max-width:1660px;padding:24px 28px 40px}
+.learning-dashboard {color:var(--text);display:flex;flex-direction:column;gap:24px;min-width:0}
+.learning-dashboard a {text-decoration:none;color:inherit}
+.learning-dashboard button,.learning-dashboard select,.learning-dashboard input {font:inherit}
+.learning-dashboard a:focus-visible,.learning-dashboard button:focus-visible,.learning-dashboard select:focus-visible,.learning-dashboard input:focus-visible {outline:3px solid var(--pri);outline-offset:4px}
+.learning-topbar {display:flex;align-items:center;gap:30px;margin-bottom:4px}
+.learning-search {display:flex;align-items:center;gap:12px;flex:1;min-width:0;min-height:46px;padding:0 18px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--mut);box-shadow:0 3px 7px #173c6b05}
+.learning-search input {width:100%;min-width:0;border:0;background:transparent;color:var(--text);outline:none;padding:10px 0;font-size:16px}
+.learning-search input::placeholder {color:var(--mut)}
+.learning-top-stats {display:flex;align-items:center;gap:24px;flex:none}
+.learning-top-stats a {display:flex;align-items:center;gap:7px;min-height:44px;min-width:44px;justify-content:center}
+.learning-flame {color:#f88a1c;fill:#ffdd7a}.learning-gem {color:#109bdf;fill:#65d7ff}
+.learning-heading {display:flex;align-items:center;justify-content:space-between;gap:20px}
+.learning-heading h1 {font-size:clamp(28px,2.5vw,36px);font-weight:750;line-height:1.2;letter-spacing:-.8px;margin:0 0 5px}
+.learning-heading p {color:var(--mut);font-size:17px;line-height:1.5;margin:0}
+.learning-level-select {display:flex;align-items:center;gap:10px;flex:none;min-height:44px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+.learning-level-select>span {display:grid;place-items:center;background:#e95e57;color:white;width:27px;height:27px;border-radius:50%}
+.learning-level-select select {background:transparent;border:0;color:var(--text);font-weight:600;padding:5px 4px;max-width:180px}
+.learning-level-select option {background:var(--card)}
+.learning-panel {border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 3px 8px #173c6b06}
+.learning-overview {display:grid;grid-template-columns:minmax(0,4.4fr) repeat(3,minmax(105px,1fr));gap:12px}
+.learning-resume {display:flex;align-items:center;gap:20px;min-width:0;padding:22px;background:color-mix(in srgb,var(--pri) 8%,var(--card));box-shadow:inset 0 0 0 7px var(--card),0 3px 8px #173c6b06}
+.learning-resume-icon {display:grid;place-items:center;width:76px;height:76px;flex:none;border-radius:50%;background:color-mix(in srgb,var(--pri) 13%,var(--card));color:var(--pri)}
+.learning-resume-copy {min-width:0;flex:1}
+.learning-eyebrow {font-size:12px;font-weight:750;letter-spacing:.4px}
+.learning-resume-copy h2 {font-size:21px;line-height:1.3;font-weight:700;margin:3px 0;overflow-wrap:anywhere;letter-spacing:-.4px}
+.learning-resume-copy p {font-size:15px;margin:0 0 12px;color:var(--mut)}
+.learning-dashboard progress {display:block;appearance:none;width:100%;height:9px;border:0;border-radius:99px;overflow:hidden;background:var(--soft)}
+.learning-dashboard progress::-webkit-progress-bar {background:var(--soft);border-radius:99px}
+.learning-dashboard progress::-webkit-progress-value {background:var(--pri);border-radius:99px}
+.learning-dashboard progress::-moz-progress-bar {background:var(--pri);border-radius:99px}
+.learning-resume-copy small {display:block;margin-top:7px;font-size:12px;color:var(--mut)}
+.learning-dashboard .learning-primary {display:flex;align-items:center;justify-content:center;gap:12px;flex:none;min-height:46px;padding:0 22px;background:var(--pri);color:var(--onpri);border-radius:999px;font-weight:650}
+.learning-metric {display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:18px;box-shadow:inset 0 0 0 7px var(--card),0 3px 8px #173c6b06;background:color-mix(in srgb,var(--accent) 9%,var(--card))}
+.learning-metric strong {font-size:28px;font-weight:750;line-height:1.1;margin-top:4px;letter-spacing:-.5px}
+.learning-metric>span:last-child {font-size:15px;line-height:1.4;color:var(--mut)}
+.learning-dashboard .blue {--accent:#1680ff}.learning-dashboard .green {--accent:#1aa76b}.learning-dashboard .orange {--accent:#f48a20}.learning-dashboard .purple {--accent:#9560e7}.learning-dashboard .pink {--accent:#e4579d}.learning-dashboard .cyan {--accent:#11a9c8}
+.learning-tool-icon {display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;color:var(--accent);background:color-mix(in srgb,var(--accent) 15%,var(--card))}
+.learning-section-heading {display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}
+.learning-section-heading h2 {font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.5px;margin:0}
+.learning-section-heading>a,.learning-section-heading>button {display:flex;align-items:center;gap:8px;min-height:36px;font-size:14px;color:var(--link);border:0;background:none;padding:0;cursor:pointer;white-space:nowrap}
+.learning-levels {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.learning-level {position:relative;isolation:isolate;text-align:left;min-width:0;min-height:125px;overflow:hidden;padding:16px 18px;border:1px solid var(--line);border-radius:19px;background:var(--card);color:var(--text);box-shadow:0 3px 6px #173c6b08,inset 0 0 0 4px var(--card);cursor:pointer}
+.learning-level-art {position:absolute;inset:4px;border-radius:15px;z-index:-1;background-image:url('/lingora/learning-scenes.png');background-size:300% 300%;opacity:.85}
+.learning-level-1 .learning-level-art {background-position:0 50%}.learning-level-2 .learning-level-art {background-position:50% 50%}.learning-level-3 .learning-level-art {background-position:100% 50%}.learning-level-4 .learning-level-art {background-position:0 100%}.learning-level-5 .learning-level-art {background-position:50% 100%}.learning-level-6 .learning-level-art {background-position:100% 100%}
+.learning-level b {display:block;font-size:22px;line-height:1.25;font-weight:750;letter-spacing:-.5px}
+.learning-level>span:not(.learning-level-art):not(.learning-level-arrow) {display:block;margin-top:2px;font-size:13px}
+.learning-level.selected {border:2px solid var(--pri);padding:15px 17px;box-shadow:0 3px 8px #1677ff18}
+.learning-level-check {position:absolute;top:9px;right:9px;padding:2px;border-radius:50%;background:var(--pri);color:white}
+.learning-level-arrow {position:absolute;bottom:12px;right:12px;width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:#ffffffdd;color:#1677ff;box-shadow:0 2px 6px #173c6b0d}
+.learning-tools {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.learning-tool {display:flex;align-items:center;gap:10px;min-width:0;padding:12px 10px;border-radius:18px;min-height:80px}
+.learning-tool>span:nth-child(2) {min-width:0;flex:1}.learning-tool>svg {flex:none;color:var(--mut)}
+.learning-tool b {font-size:14px;line-height:1.3;display:block;font-weight:700}.learning-tool small {display:block;font-size:11px;line-height:1.5;color:var(--mut);margin-top:3px}
+.learning-tools .learning-tool-icon {width:38px;height:38px}
+.learning-recommendations {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.learning-story {display:flex;align-items:center;gap:16px;min-width:0;padding:12px;border-radius:22px}
+.learning-story-art {display:block;position:relative;width:38%;aspect-ratio:1.35;flex:none;border-radius:15px;overflow:hidden;background-image:url('/lingora/learning-scenes.png');background-size:300% 300%;background-position:0 0}
+.learning-story-art.shopping {background-position:50% 0}.learning-story-art.hotel {background-position:100% 0}
+.learning-story-art>span {position:absolute;right:8px;bottom:8px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:white;color:#13233d;box-shadow:0 2px 5px #173c6b20}
+.learning-story-copy {display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.learning-story-copy>b {font-size:18px;line-height:1.3;font-weight:750}.learning-story-copy>span:not(.learning-story-progress) {font-size:14px;line-height:1.4}
+.learning-story-copy>small {align-self:flex-start;border-radius:99px;background:var(--soft);padding:2px 8px;font-size:11px;color:var(--mut);margin:4px 0 6px}
+.learning-story-progress {display:flex;align-items:center;gap:9px;font-size:12px;color:var(--mut)}
+.learning-story-progress>span {white-space:nowrap}.learning-story-progress progress {height:7px;flex:1;min-width:0}
+.learning-resources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.learning-resource {display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:22px;min-height:84px}
+.learning-resource>span:nth-child(2) {flex:1;min-width:0}.learning-resource b {display:block;font-size:17px;line-height:1.4;font-weight:650}.learning-resource small {display:block;margin-top:3px;font-size:14px;color:var(--mut)}
+.learning-resource>svg {color:var(--mut);flex:none}
+.learning-empty {padding:18px;border:1px dashed var(--line);border-radius:16px;color:var(--mut);font-size:15px}
+.learning-panel:is(a):hover {border-color:color-mix(in srgb,var(--pri) 40%,var(--line));box-shadow:0 5px 14px #173c6b0c}
+@media(prefers-color-scheme:dark) {.learning-level-art {opacity:.28}}
+[data-theme='dark'] .learning-level-art {opacity:.28}
+[data-theme='light'] .learning-level-art {opacity:.85}
+@media(min-width:1600px) {.lingora-main:has(>.learning-dashboard) {padding:28px 36px 40px}.learning-dashboard {gap:22px}}
+@media(max-width:1250px) {.learning-overview {grid-template-columns:minmax(0,1fr) repeat(3,minmax(95px,.25fr))}.learning-resume {gap:12px;padding:18px}.learning-resume-icon {width:52px;height:52px}.learning-resume-copy h2 {font-size:18px}.learning-resume .learning-primary {padding:0 14px}.learning-metric {padding:16px 12px}.learning-tools {grid-template-columns:repeat(3,minmax(0,1fr))}.learning-level {padding:14px 12px}.learning-level.selected {padding:13px 11px}.learning-level>span:not(.learning-level-art):not(.learning-level-arrow) {font-size:12px}.learning-story {gap:10px}.learning-story-copy>b {font-size:16px}.learning-story-copy>span:not(.learning-story-progress) {font-size:13px}.learning-resource {padding:14px;gap:10px}.learning-resource b {font-size:15px}}
+@media(max-width:1000px) {.learning-overview {grid-template-columns:repeat(3,minmax(0,1fr))}.learning-resume {grid-column:1/-1}.learning-metric {display:grid;grid-template-columns:auto 1fr;column-gap:12px}.learning-metric>.learning-tool-icon {grid-row:1/3;align-self:center}.learning-metric strong {font-size:25px}.learning-metric>span:last-child {font-size:13px}.learning-metric br {display:none}.learning-levels {grid-template-columns:repeat(3,minmax(0,1fr))}.learning-level {min-height:115px}.learning-recommendations {grid-template-columns:1fr}.learning-story-art {width:130px;height:92px;aspect-ratio:auto}.learning-story-copy>b {font-size:18px}.learning-story-copy>span:not(.learning-story-progress) {font-size:15px}.learning-story-copy>small {font-size:12px}.learning-resources {grid-template-columns:1fr}}
+@media(max-width:700px) {.lingora-main:has(>.learning-dashboard) {padding:16px 16px calc(95px + env(safe-area-inset-bottom))}.learning-dashboard {gap:24px}.learning-topbar {gap:10px;flex-wrap:wrap;margin:0}.learning-search {flex-basis:100%;order:2}.learning-top-stats {margin-left:auto;gap:14px}.learning-heading {align-items:flex-start;flex-direction:column;gap:12px}.learning-heading h1 {font-size:28px}.learning-heading p {font-size:15px}.learning-level-select {align-self:flex-start}.learning-resume {flex-wrap:wrap;padding:20px;gap:12px}.learning-resume-copy {flex-basis:calc(100% - 70px)}.learning-resume .learning-primary {margin-left:64px;min-height:44px}.learning-resume-icon {width:50px;height:50px}.learning-resume-copy h2 {font-size:18px}.learning-eyebrow {font-size:11px}.learning-overview {gap:8px}.learning-metric {display:flex;align-items:center;text-align:center;padding:14px 8px;gap:7px;border-radius:18px}.learning-metric strong {font-size:24px}.learning-metric>span:last-child {font-size:12px}.learning-metric .learning-tool-icon {width:36px;height:36px}.learning-section-heading {gap:8px}.learning-section-heading h2 {font-size:20px}.learning-section-heading>a,.learning-section-heading>button {font-size:12px;min-height:44px;gap:4px}.learning-levels {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.learning-level {min-height:120px}.learning-level b {font-size:22px}.learning-tools {grid-template-columns:repeat(2,minmax(0,1fr))}.learning-tool {padding:12px 10px;gap:8px}.learning-tool b {font-size:14px}.learning-tool small {font-size:12px}.learning-tool>svg {display:none}.learning-story-art {width:105px;height:95px}.learning-story-copy>b {font-size:17px}.learning-story-copy>small {max-width:100%}.learning-resource {padding:16px}.learning-resource b {font-size:16px}}
+
+/* Curriculum screen: compact teaching content with a secondary study rail. */
+.learning-layout {display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
+.learning-main-column,.learning-side-column {display:flex;flex-direction:column;gap:22px;min-width:0}
+.learning-kicker {display:block;color:var(--link);font-size:12px;font-weight:750;letter-spacing:2px;margin-bottom:5px}
+.learning-heading {align-items:center}
+.learning-heading h1 {font-size:clamp(27px,2.4vw,35px)}
+.learning-heading p {font-size:15px}
+.learning-level-select {padding:3px 8px;gap:5px}.learning-level-select select {font-size:14px;max-width:155px}
+.learning-resume {gap:18px;padding:20px;min-height:170px;flex-wrap:nowrap}
+.learning-resume .learning-resume-art {width:120px;height:120px;aspect-ratio:1;flex:none;border-radius:16px}
+.learning-resume-copy h2 {font-size:23px}.learning-resume-copy small {margin:4px 0;font-size:12px}
+.learning-resume .learning-primary {font-size:14px;padding:0 18px}
+.learning-eyebrow {display:inline-block;background:var(--pri);color:var(--onpri);border-radius:99px;padding:3px 10px;font-size:11px;letter-spacing:.3px}
+.learning-curriculum-note {font-size:12px;color:var(--mut);line-height:1.5;margin:-12px 4px 0}
+.learning-levels {gap:10px}.learning-level {min-height:118px;padding:14px 12px}.learning-level.selected {padding:13px 11px}.learning-level b {font-size:20px}.learning-level>span:not(.learning-level-art):not(.learning-level-arrow) {font-size:11px}
+.learning-tools {grid-template-columns:repeat(3,minmax(0,1fr))}.learning-tool {padding:14px;gap:12px}.learning-tools .learning-tool-icon {width:44px;height:44px}.learning-tool b {font-size:15px}.learning-tool small {font-size:12px}
+.learning-tool-unavailable {opacity:.65}
+.learning-resources {gap:10px}.learning-resource {padding:14px 12px;gap:10px}.learning-resource b {font-size:14px}.learning-resource small {font-size:12px}.learning-resource .learning-tool-icon {width:36px;height:36px}
+.learning-filters {display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.learning-filters select,.learning-filters input {background:var(--card);color:var(--text);font:inherit;font-size:13px;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:44px;max-width:100%}
+.learning-filters>label {min-width:0}.learning-lesson-search {display:flex;align-items:center;position:relative;flex:1;min-width:170px!important}.learning-lesson-search svg {position:absolute;left:12px;color:var(--mut)}.learning-lesson-search input {padding-left:38px;width:100%}
+.learning-browser-count {color:var(--mut);font-size:13px;white-space:nowrap}
+.learning-lesson-list {display:flex;flex-direction:column;gap:10px}
+.learning-lesson-row {display:flex;align-items:center;gap:14px;padding:16px;border-radius:17px}
+.learning-lesson-symbol {display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:13px;background:var(--hov);color:var(--link)}.learning-lesson-symbol.done {color:#198461;background:color-mix(in srgb,#1aa76b 13%,var(--card))}
+.learning-lesson-row>span:nth-child(2) {min-width:0;flex:1}.learning-lesson-row b {display:block;font-size:16px;line-height:1.4}.learning-lesson-row small {display:block;font-size:12px;color:var(--mut);line-height:1.6;margin-top:3px}.learning-lesson-state {display:flex;align-items:center;gap:6px;color:var(--link);font-size:12px;white-space:nowrap}
+.learning-side-column .learning-panel {padding:20px}
+.learning-side-column h2 {display:flex;align-items:center;gap:9px;font-size:18px;line-height:1.4;letter-spacing:-.3px;font-weight:700;margin:0 0 14px}
+.learning-plan {background:color-mix(in srgb,#f5a833 7%,var(--card))}.learning-plan h2 svg {color:#eb8a14}.learning-plan ul {padding:0;margin:0 0 18px;list-style:none;display:flex;flex-direction:column;gap:13px}.learning-plan li a {display:flex;align-items:center;gap:11px;font-size:14px;line-height:1.5;min-height:36px}.learning-plan li a>span:first-child {display:grid;place-items:center;width:22px;height:22px;border:1.5px solid var(--line);border-radius:50%;flex:none;background:var(--card)}.learning-plan li a>span.done {background:#ed8c16;border-color:#ed8c16;color:white}.learning-plan li a:has(.done)>span:last-child {text-decoration:line-through;color:var(--mut)}.learning-plan p {display:flex;justify-content:space-between;font-size:12px;margin:8px 0}.learning-plan small {font-size:11px;color:var(--mut)}.learning-plan progress::-webkit-progress-value {background:#ed8c16}
+.learning-quick>div {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.learning-quick a {display:flex;align-items:center;gap:7px;flex-direction:column;text-align:center;font-size:11px;padding:8px 2px;border-radius:13px;background:color-mix(in srgb,var(--accent) 9%,var(--card));min-height:80px}.learning-quick .learning-tool-icon {width:36px;height:36px;background:transparent}.learning-quick b {font-weight:550}
+.learning-journey>.learning-section-heading {margin-bottom:6px}.learning-journey h2 {margin-bottom:0}.learning-journey>b {font-size:30px;font-weight:750;line-height:1.3}.learning-journey>p {font-size:14px;color:var(--mut);margin:4px 0 13px}.learning-journey>small {display:block;font-size:12px;color:var(--mut);line-height:1.5;margin-top:12px}
+.learning-saved h2 {justify-content:space-between}.learning-saved p {font-size:13px;color:var(--mut);margin:0}
+@media(min-width:1600px) {.learning-layout {grid-template-columns:minmax(0,1fr) 320px;gap:26px}}
+@media(max-width:1350px) {.learning-layout {grid-template-columns:minmax(0,1fr)}.learning-side-column {display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.learning-resume-copy h2 {font-size:22px}.learning-resume .learning-resume-art {width:105px;height:105px}}
+@media(max-width:1000px) {.learning-resume {grid-column:auto}.learning-levels {grid-template-columns:repeat(3,minmax(0,1fr))}.learning-tools {grid-template-columns:repeat(2,minmax(0,1fr))}.learning-resources {grid-template-columns:repeat(3,minmax(0,1fr))}.learning-resource {flex-wrap:wrap}.learning-resume .learning-primary {white-space:nowrap}.learning-resume-copy h2 {font-size:20px}}
+@media(max-width:700px) {.learning-layout {gap:20px}.learning-heading {align-items:flex-start;gap:12px}.learning-heading p {font-size:15px}.learning-resume {flex-wrap:wrap;padding:18px;gap:12px}.learning-resume .learning-resume-art {width:76px;height:76px}.learning-resume-copy {flex-basis:calc(100% - 90px)}.learning-resume-copy h2 {font-size:18px}.learning-resume .learning-primary {margin-left:0;width:100%}.learning-levels {grid-template-columns:repeat(2,minmax(0,1fr))}.learning-tools {grid-template-columns:repeat(2,minmax(0,1fr))}.learning-tool {padding:12px 10px;gap:8px}.learning-tools .learning-tool-icon {width:34px;height:34px}.learning-tool b {font-size:13px}.learning-tool small {font-size:12px}.learning-resources,.learning-side-column {grid-template-columns:1fr}.learning-resource {flex-wrap:nowrap}.learning-resource b {font-size:16px}.learning-lesson-state {font-size:0}.learning-lesson-row {padding:12px;gap:10px}.learning-lesson-row b {font-size:15px}.learning-filters>label:not(.learning-lesson-search) {flex:1}.learning-filters select {width:100%}.learning-lesson-search {flex-basis:100%}.learning-section-heading h2 {font-size:20px}}

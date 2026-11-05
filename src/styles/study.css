@@ -1,0 +1,34 @@
+.study-page {display:flex;flex-direction:column;gap:24px;color:var(--text);min-width:0}
+.study-page h1,.study-page h2,.study-page h3,.study-page p {margin-top:0}
+.study-page h1 {font-size:clamp(28px,2.5vw,36px);line-height:1.2;letter-spacing:-.8px;margin-bottom:8px;font-weight:750}
+.study-page h2 {font-size:22px;line-height:1.3;letter-spacing:-.4px;margin-bottom:14px;font-weight:700}
+.study-page h3 {font-size:18px;line-height:1.4;margin-bottom:8px;font-weight:650}
+.study-page p {font-size:16px;line-height:1.6;margin-bottom:12px}
+.study-header {display:flex;align-items:center;justify-content:space-between;gap:20px}
+.study-header p {margin-bottom:0;color:var(--mut)}
+.study-card {min-width:0;padding:22px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 4px 14px #173c6b06}
+.study-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+.study-page .study-button {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--link);font:inherit;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;line-height:1.3}
+.study-page .study-button.primary {background:var(--pri);border-color:var(--pri);color:var(--onpri)}
+.study-page .study-button:disabled {opacity:.55;cursor:not-allowed}
+.study-page .study-button:not(:disabled):hover {filter:brightness(.97)}
+.study-page a:focus-visible,.study-page button:focus-visible,.study-page input:focus-visible,.study-page textarea:focus-visible,.study-page select:focus-visible {outline:3px solid var(--pri);outline-offset:3px}
+.study-tabs {display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.study-tabs button,.study-tabs a {display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--mut);font:inherit;font-size:14px;text-decoration:none;cursor:pointer}
+.study-tabs [aria-selected='true'],.study-tabs [aria-pressed='true'],.study-tabs .active {background:var(--pri);color:var(--onpri);border-color:var(--pri)}
+.study-muted {color:var(--mut)}
+.study-empty {padding:24px;border:1px dashed var(--line);border-radius:18px;color:var(--mut);background:var(--card);line-height:1.6}
+.study-field {display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--text)}
+.study-field input,.study-field select,.study-field textarea,input.study-field,select.study-field,textarea.study-field,.study-page input[type='search'] {width:100%;min-width:0;min-height:44px;padding:11px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);font:inherit;font-size:16px}
+.study-field textarea,textarea.study-field {min-height:110px;resize:vertical}
+.study-progress {width:100%;height:9px;appearance:none;border:0;border-radius:99px;background:var(--soft);overflow:hidden}
+.study-progress::-webkit-progress-bar {background:var(--soft);border-radius:99px}
+.study-progress::-webkit-progress-value {background:var(--pri);border-radius:99px}
+.study-progress::-moz-progress-bar {background:var(--pri);border-radius:99px}
+.study-page table {width:100%;border-collapse:collapse;font-size:14px}
+.study-page th,.study-page td {text-align:left;padding:10px;border-bottom:1px solid var(--line)}
+.study-page small {line-height:1.5}
+.study-page [role='alert'] {color:var(--text);border-left:3px solid #e56c50;padding:12px;background:var(--soft);border-radius:6px}
+.study-page .study-kicker {font-size:12px;letter-spacing:1.5px;font-weight:750;text-transform:uppercase;color:var(--link);margin-bottom:5px}
+@media(max-width:700px) {.study-header {align-items:flex-start;flex-direction:column;gap:14px}.study-card {padding:18px}.study-page {gap:20px}.study-page h2 {font-size:20px}.study-grid {grid-template-columns:1fr}.study-page th,.study-page td {padding:8px 5px;font-size:12px}}
+@media(prefers-reduced-motion:reduce) {.study-page * {scroll-behavior:auto!important;transition:none!important;animation:none!important}}

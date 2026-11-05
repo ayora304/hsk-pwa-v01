@@ -1,0 +1,13 @@
+.practice-page {display:flex;flex-direction:column;gap:20px}
+.practice-eyebrow {font-size:11px;font-weight:750;letter-spacing:1px;text-transform:uppercase;color:var(--link,var(--pri));margin:0 0 9px}
+.practice-filters {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.practice-activity-heading {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}.practice-activity-heading h2 {margin:0}
+.practice-activities {grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.practice-activities article {display:flex;flex-direction:column;align-items:flex-start;gap:10px}.practice-activities h3 {font-size:24px;margin:4px 0 0}.practice-activities p {margin:0;line-height:1.7}.practice-activities .study-button {margin-top:auto}
+.practice-skill {border-radius:999px;background:var(--soft);color:var(--text);padding:7px 12px;font-size:11px;font-weight:700}
+.practice-lesson-link {font-size:12px;padding:8px 0;color:var(--link,var(--pri))}
+.practice-flashcards {display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.practice-flashcard {width:min(100%,600px);min-height:280px;border:1px solid var(--line);background:var(--bg);padding:30px 20px;border-radius:22px;display:flex;flex-direction:column;justify-content:center}
+.practice-flashcard>strong {font-size:clamp(44px,8vw,72px);font-weight:650}.practice-flashcard p {line-height:1.8}.practice-flashcard h3 {font-size:22px}
+.practice-flashcard-actions {display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+@media(max-width:600px) {.practice-filters {grid-template-columns:1fr}.practice-flashcard-actions .study-button {flex:1;justify-content:center}.practice-flashcard {min-height:260px}}

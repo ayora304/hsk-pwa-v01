@@ -1,12 +1,12 @@
 .lingora-dashboard {width:100%;min-width:0}
 .sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.lingora-topbar {display:flex;align-items:center;gap:24px;margin-bottom:24px}
+.lingora-topbar {display:grid;grid-template-columns:minmax(0,1fr) 270px;align-items:center;gap:22px;margin-bottom:24px}
 .lingora-search-wrap {position:relative;flex:1;min-width:0}
 .lingora-search {display:flex;align-items:center;gap:10px;height:44px;padding:0 16px;background:var(--card);border:1px solid var(--line);border-radius:999px;color:var(--mut)}
 .lingora-search:focus-within {border-color:var(--pri);box-shadow:0 0 0 3px #1677ff14}
 .lingora-search input {min-width:0;flex:1;border:0;background:transparent;outline:0!important;color:var(--text);font-size:13px}
 .lingora-search input::placeholder {color:var(--mut)}
-.lingora-top-stats {display:flex;align-items:center;gap:21px}
+.lingora-top-stats {display:flex;align-items:center;justify-self:end;gap:21px}
 .lingora-top-stats a {display:flex;align-items:center;gap:7px;color:var(--text);min-height:44px;font-size:15px}
 .lingora-top-stats .flame {color:#F38A38;fill:#FFCE7A}.lingora-top-stats .blue {color:#268DDE}
 .lingora-bell {width:44px;justify-content:center;border-radius:50%}.lingora-bell:hover {background:var(--hov)}
@@ -42,12 +42,12 @@
 .lingora-dashboard progress::-moz-progress-bar {background:var(--pri);border-radius:5px}
 .lingora-lesson .lesson-start {padding:0 19px;font-size:12px}
 .lingora-skills {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.lingora-skill {position:relative;display:flex;align-items:center;gap:10px;min-height:90px;padding:13px 10px;border-radius:16px;color:#182A45;transition:transform .18s,box-shadow .18s}
+.lingora-skill {position:relative;display:flex;align-items:center;gap:10px;min-height:90px;padding:13px 10px;border:1px solid var(--skill-line);border-radius:16px;color:#182A45;box-shadow:0 3px 10px #173C6B0D,inset 0 1px 0 #FFFFFF70;transition:transform .18s,box-shadow .18s}
 .lingora-skill:hover,.lingora-resources>a:hover {transform:translateY(-2px);box-shadow:0 8px 18px #14509112}
-.lingora-skill.purple {background:#EEEAFF}.lingora-skill.pink {background:#FFE9E9}.lingora-skill.green {background:#E6F8EE}.lingora-skill.orange {background:#FFF0E3}
+.lingora-skill.purple {background:#E7E0FF;--skill-line:#D3C5F5}.lingora-skill.pink {background:#FBE1E4;--skill-line:#F0C4CD}.lingora-skill.green {background:#DDF2E7;--skill-line:#BBDCCB}.lingora-skill.orange {background:#FFE8D5;--skill-line:#EDCDAE}
 .lingora-skill-icon {display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#8B7CF6;color:white}
 .pink .lingora-skill-icon {background:#EF777D}.green .lingora-skill-icon {background:#2BB673}.orange .lingora-skill-icon {background:#F49345}
-.lingora-skill b {display:block;font-size:11px;font-weight:750;letter-spacing:-.2px}.lingora-skill small {display:block;margin-top:5px;font-size:9px;line-height:1.4;color:#566780}
+.lingora-skill b {display:block;font-size:11px;font-weight:750;letter-spacing:-.2px}.lingora-skill small {display:block;margin-top:5px;font-size:9px;line-height:1.4;color:#455974}
 .skill-arrow {position:absolute;bottom:9px;right:10px;color:#64738B}
 .lingora-resources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .lingora-resources>a {display:flex;gap:9px;align-items:center;min-height:74px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;color:var(--text);transition:transform .18s,box-shadow .18s}
@@ -88,9 +88,9 @@
 .lingora-dialog label {display:flex;flex-direction:column;gap:8px;font-size:13px;margin:22px 0}
 .lingora-dialog select {height:46px;padding:0 12px;background:var(--bg);border:1px solid var(--bl);border-radius:10px;color:var(--text)}
 .lingora-dialog .lingora-button {width:100%}
-@media(min-width:1450px) {.lingora-columns {grid-template-columns:minmax(0,1fr) 300px;gap:28px}.lingora-hero {min-height:350px}.lingora-hero-copy {padding:42px 38px}.lingora-skill {min-height:96px;padding:16px}.lingora-skill b {font-size:13px}.lingora-skill small {font-size:11px}.lingora-skill-icon {width:42px;height:42px}.lingora-card {padding:22px}.lingora-resources b {font-size:13px}.lingora-resources small {font-size:11px}}
-@media(max-width:1200px) {.lingora-columns {grid-template-columns:minmax(0,1fr) 240px;gap:18px}.lingora-skills {grid-template-columns:repeat(2,minmax(0,1fr))}.lingora-skill {min-height:72px;padding:12px}.lingora-skill b {font-size:12px}.lingora-skill small {font-size:10px}.lingora-resources {grid-template-columns:1fr}.lingora-resources>a {min-height:60px}.lingora-hero-copy {padding-left:24px}.lingora-lesson {gap:10px}.lingora-lesson>img {width:90px;height:82px}.lingora-lesson .lesson-start {padding:0 14px}.lingora-card {padding:16px 13px}.lingora-goal {gap:8px}.lingora-ring {width:100px;height:100px}.lingora-hero h1 {font-size:29px}}
-@media(max-width:1000px) {.lingora-columns {grid-template-columns:minmax(0,1fr)}.lingora-right {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.lingora-reward {grid-column:1/-1;display:grid;grid-template-columns:100px 1fr 160px;gap:16px;padding:12px 20px}.lingora-reward>img {width:100px;height:85px}.lingora-reward>p {margin:0;text-align:left}.lingora-skills {grid-template-columns:repeat(4,minmax(0,1fr))}.lingora-skill {flex-direction:column;align-items:flex-start;gap:9px;min-height:112px}.lingora-content {gap:22px}.lingora-resources {grid-template-columns:repeat(3,minmax(0,1fr))}.lingora-resources>a {padding:10px;gap:6px}.lingora-resource-icon {width:27px;height:27px}.lingora-resources>a>svg {display:none}.lingora-hero-copy {width:64%}.lingora-hero {min-height:310px}}
+@media(min-width:1450px) {.lingora-columns,.lingora-topbar {grid-template-columns:minmax(0,1fr) 300px;gap:28px}.lingora-hero {min-height:350px}.lingora-hero-copy {padding:42px 38px}.lingora-skill {min-height:96px;padding:16px}.lingora-skill b {font-size:13px}.lingora-skill small {font-size:11px}.lingora-skill-icon {width:42px;height:42px}.lingora-card {padding:22px}.lingora-resources b {font-size:13px}.lingora-resources small {font-size:11px}}
+@media(max-width:1200px) {.lingora-columns,.lingora-topbar {grid-template-columns:minmax(0,1fr) 240px;gap:18px}.lingora-skills {grid-template-columns:repeat(2,minmax(0,1fr))}.lingora-skill {min-height:72px;padding:12px}.lingora-skill b {font-size:12px}.lingora-skill small {font-size:10px}.lingora-resources {grid-template-columns:1fr}.lingora-resources>a {min-height:60px}.lingora-hero-copy {padding-left:24px}.lingora-lesson {gap:10px}.lingora-lesson>img {width:90px;height:82px}.lingora-lesson .lesson-start {padding:0 14px}.lingora-card {padding:16px 13px}.lingora-goal {gap:8px}.lingora-ring {width:100px;height:100px}.lingora-hero h1 {font-size:29px}}
+@media(max-width:1000px) {.lingora-columns,.lingora-topbar {grid-template-columns:minmax(0,1fr)}.lingora-right {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.lingora-reward {grid-column:1/-1;display:grid;grid-template-columns:100px 1fr 160px;gap:16px;padding:12px 20px}.lingora-reward>img {width:100px;height:85px}.lingora-reward>p {margin:0;text-align:left}.lingora-skills {grid-template-columns:repeat(4,minmax(0,1fr))}.lingora-skill {flex-direction:column;align-items:flex-start;gap:9px;min-height:112px}.lingora-content {gap:22px}.lingora-resources {grid-template-columns:repeat(3,minmax(0,1fr))}.lingora-resources>a {padding:10px;gap:6px}.lingora-resource-icon {width:27px;height:27px}.lingora-resources>a>svg {display:none}.lingora-hero-copy {width:64%}.lingora-hero {min-height:310px}}
 @media(max-width:700px) {.lingora-topbar {gap:10px;margin-bottom:18px}.lingora-top-stats {gap:10px}.lingora-top-stats a {font-size:12px;gap:3px}.lingora-top-stats svg {width:19px}.lingora-bell {width:30px}.lingora-search {padding:0 12px}.lingora-search input {font-size:11px}.lingora-hero h1 {font-size:29px}.lingora-hero-copy {padding:50px 22px 24px;width:72%}.lingora-hero p {font-size:13px;margin:14px 0 20px}.lingora-hero {min-height:304px;border-radius:20px}.lingora-hero-art {width:72%;opacity:.95}.lingora-language {top:10px;right:10px;font-size:10px;padding:5px 8px;min-height:30px}.lingora-hero .lingora-button {font-size:12px;padding:0 17px}.lingora-skills {grid-template-columns:repeat(2,minmax(0,1fr))}.lingora-skill {flex-direction:row;align-items:center;min-height:78px;gap:10px}.lingora-resources {grid-template-columns:1fr}.lingora-resources>a {min-height:64px;gap:12px;padding:12px}.lingora-resources b {font-size:13px}.lingora-resource-icon {width:34px;height:34px}.lingora-resources>a>svg {display:block}.lingora-right {grid-template-columns:1fr}.lingora-card {padding:20px}.lingora-goal {justify-content:flex-start;gap:20px}.lingora-ring {width:112px;height:112px}.lingora-goal-copy b {font-size:14px}.lingora-goal-copy p {font-size:12px;max-width:150px}.lingora-days>div {font-size:11px}.lingora-days span {width:22px;height:22px}.lingora-goal-note {font-size:10px}.lingora-progress-rows>a {font-size:13px;min-height:47px}.lingora-reward {display:flex;gap:0;padding:14px 20px 20px}.lingora-reward>img {width:130px;height:104px}.lingora-reward>p {text-align:center;margin:4px 0 16px}.lingora-section-heading h2 {font-size:15px}.lingora-section-heading>a,.lingora-card-heading>button {min-height:44px}.lingora-section-heading {margin-bottom:8px}.lingora-top-stats>a:nth-child(2) {display:none}}
 @media(max-width:380px) {.lingora-lesson {flex-wrap:wrap}.lingora-lesson .lesson-start {width:100%}.lingora-lesson>img {width:85px}.lingora-skill-icon {width:30px;height:30px}.lingora-skill {gap:7px}.lingora-skill b {font-size:11px}.lingora-hero-copy {padding-left:18px}.lingora-hero h1 {font-size:26px}}
 /* Keep the supplied illustrations intact at wide and narrow aspect ratios. */
@@ -120,6 +120,7 @@
 /* Progress sidebar refinement, grounded in the supplied card reference. */
 .lingora-right {gap:18px}
 .lingora-right>.lingora-card {padding:18px 17px;border-color:color-mix(in srgb,var(--line) 70%,transparent);border-radius:22px;box-shadow:0 4px 18px #16395703}
+.lingora-right>.lingora-card:has(>.lingora-goal) {border-color:color-mix(in srgb,var(--line) 80%,var(--mut));box-shadow:0 4px 18px #16395712}
 .lingora-right .lingora-card-heading {margin-bottom:18px}
 .lingora-right .lingora-card-heading h2 {font-size:14px;letter-spacing:-.25px}
 .lingora-right .lingora-card-heading>button {min-height:32px;padding:0 0 0 8px;gap:4px}
@@ -127,7 +128,7 @@
 .lingora-ring {position:relative;width:120px;height:120px;padding:0;background:transparent;flex:none}
 .lingora-ring-chart {position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
 .lingora-ring-chart circle {fill:none;stroke-width:8;stroke-linecap:round}
-.goal-ring-track {stroke:var(--soft)}
+.goal-ring-track {stroke:color-mix(in srgb,var(--soft) 72%,var(--mut))}
 .goal-ring-fill {stroke:var(--pri);transition:stroke-dasharray .3s ease}
 .lingora-ring>div {position:absolute;inset:13px;width:auto;height:auto;background:transparent;gap:4px}
 .lingora-ring .goal-ring-flame {color:#F79A23;fill:#FFD168;margin-bottom:1px;flex:none}
@@ -140,6 +141,7 @@
 .lingora-days {margin-top:20px;padding:0 2px}
 .lingora-days>div {font-size:10px;gap:7px}
 .lingora-days span {width:21px;height:21px;border-color:var(--line);background:var(--card)}
+.lingora-days>div:not(.done)>span {border-color:color-mix(in srgb,var(--line) 55%,var(--mut))}
 .lingora-days .done span {box-shadow:0 2px 5px #1677ff20}
 .lingora-goal-note {margin:15px 0 0;font-size:9px;line-height:1.5}
 .lingora-pill {min-height:28px;padding:5px 9px;border:0;background:var(--bg);font-size:10px;font-weight:550}
@@ -185,6 +187,27 @@
 }
 .lingora-diamond {color:#109BDF;fill:#65D7FF;filter:drop-shadow(0 2px 2px #0796DF20);stroke-width:1.8}
 
+/* Scale the desktop landscape by height so wider cards never crop the panda. */
+.lingora-hero .lingora-hero-panda {
+  width:auto;max-width:100%;height:100%;object-fit:contain;object-position:right bottom;
+  mask-image:linear-gradient(90deg,transparent,#000 18%);
+}
+@media(min-width:701px) {
+  .lingora-app.is-home .lingora-hero {
+    aspect-ratio:auto;
+  }
+  .lingora-hero .lingora-hero-panda {
+    width:100%;height:100%;object-fit:cover;object-position:right bottom;
+    mask-image:none;
+  }
+}
+@media(max-width:700px) {
+  .is-home .lingora-hero .lingora-hero-panda {
+    width:100%;height:190px;object-fit:cover;object-position:right bottom;
+    mask-image:linear-gradient(90deg,transparent,#000 45%),linear-gradient(180deg,transparent,#000 24%);
+    mask-composite:intersect;
+  }
+}
 /* A quiet blue wash behind the upper-right progress cards. */
 @media (min-width:701px) {
   .lingora-app.is-home {

@@ -1,0 +1,12 @@
+.challenges-page .challenges-featured {display:grid;grid-template-columns:minmax(0,2fr) minmax(170px,1fr);gap:28px;background:linear-gradient(120deg,var(--hov),var(--card));border-color:var(--bl)}
+.challenges-featured>div:last-child {display:flex;flex-direction:column;justify-content:center;gap:14px}
+.challenges-featured .study-muted:first-child {display:flex;align-items:center;gap:8px}
+.challenges-mission {display:flex;flex-direction:column;gap:12px}
+.challenges-mission h3,.challenges-mission p {margin:0}
+.challenges-mission .study-button {margin-top:auto;align-self:flex-start}
+.challenges-mission-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--link)}
+.challenges-status {font-size:12px;padding:5px 9px;border-radius:20px;background:var(--hov);color:var(--link)}
+.challenges-badges {display:flex;flex-wrap:wrap;gap:14px;padding:0;list-style:none}
+.challenges-badges li {display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--line);border-radius:14px;color:var(--link)}
+.challenges-badges small {display:block;margin-top:4px;color:var(--mut)}
+@media(max-width:700px) {.challenges-page .challenges-featured {grid-template-columns:1fr;gap:18px}}
